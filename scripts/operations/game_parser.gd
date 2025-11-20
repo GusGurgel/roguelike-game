@@ -1,13 +1,14 @@
 extends Operation
-class_name LevelParser
-## Parsers a JSON into a game Level
+class_name GameParser
+## Parsers a JSON into a playable game.
+
+var data: Game = Game.new()
 
 var player_scene = preload("res://scenes/player.tscn")
 
 var colored_texture: CompressedTexture2D = preload("res://images/tileset_colored.png")
 var monochrome_texture: CompressedTexture2D = preload("res://images/tileset_monochrome.png")
 var json_loader: JSONLoader = JSONLoader.new()
-var data: Level = Level.new()
 
 var tile_key_regex: RegEx = RegEx.create_from_string("^(\\d+),(\\d+)$")
 var hex_color_regex: RegEx = RegEx.create_from_string("^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$")
@@ -16,18 +17,17 @@ var hex_color_regex: RegEx = RegEx.create_from_string("^#([0-9a-fA-F]{3}|[0-9a-f
 func load_from_path(path: String) -> void:
 	# Load raw_data.
 	json_loader.load_from_path(path)
-	if json_loader.error == OK:
-		data.raw_data = json_loader.data
-	else:
-		error = json_loader.error
-		error_message = json_loader.error_message
+	if json_loader.has_erros():
+		error_messages.append_array(json_loader.error_messages)
 		return
+	
+	data.raw_data = json_loader.data
 	
 	# Load textures.
 	data.textures = parse_textures(data.raw_data)
 
 	# Load tilemap.
-	data.tilemap = parse_tilemap(data.raw_data)
+	data.layers = parse_layers(data.raw_data)
 
 	# Load player
 	data.player = parse_player(data.raw_data)
@@ -60,8 +60,7 @@ func parse_textures(raw_data: Dictionary) -> Dictionary[String, AtlasTexture]:
 		var texture_data = raw_data.textures[key]
 
 		if not Utils.dictionary_has_all(texture_data, ["x", "y"]):
-			error = ERR_INVALID_DATA
-			error_message = "Texture '%s' without position." % key
+			warning_messages.push_back("Texture '%s' without position." % key)
 			continue
 
 		## Add colored and monochrome versions
@@ -84,81 +83,103 @@ func parse_textures(raw_data: Dictionary) -> Dictionary[String, AtlasTexture]:
 	return textures
 
 
-func parse_tilemap(raw_data: Dictionary) -> Dictionary[String, Tile]:
-	var tilemap: Dictionary[String, Tile] = {}
+func parse_layers(raw_data: Dictionary) -> Dictionary[String, Layer]:
+	var layers: Dictionary[String, Layer] = {}
 
-	if not raw_data.has("tilemap"):
-		error = ERR_INVALID_DATA
-		error_message = "Level without a tilemap."
-		return {}
+	if not raw_data.has("layers"):
+		warning_messages.push_back("Game without layers.")
+		return layers
 
-	for tile_key in raw_data["tilemap"]:
-		var tile_data = raw_data["tilemap"][tile_key]
+	for layer_key in raw_data["layers"]:
+		layers[layer_key] = parse_layer(layer_key, raw_data["layers"])
+
+	return layers
+
+
+func parse_layer(layer_key: String, layers_data: Dictionary) -> Layer:
+	var layer: Layer = Layer.new()
+	var layer_data = layers_data[layer_key]
+
+
+	if not layer_data.has("tiles"):
+		warning_messages.push_back("Layer '%s' without tiles." % layer_key)
+		return layer
+
+	layer.tiles = parse_layer_tiles(layer_data["tiles"])
+
+	return layer
+
+
+func parse_layer_tiles(tiles_data: Dictionary) -> Dictionary[String, Tile]:
+	var tiles: Dictionary[String, Tile] = {}
+
+	for tile_key in tiles_data:
+		var tile_data = tiles_data[tile_key]
 		var tile: Tile = Tile.new()
+
 		tile.grid_position = parse_tile_grid_position(tile_key)
 
 		# Set tile position
 		if not tile_data.has("texture"):
-			error = ERR_INVALID_DATA
-			error_message = "Tile '%s' without a texture" % tile_key
-			return {}
+			warning_messages.push_back("Tile '%s' without a texture" % tile_key)
+			continue
 		tile.texture = data.get_texture(tile_data["texture"])
 
 		# Set tile color
 		if tile_data.has("color"):
 			if not hex_color_regex.search(tile_data["color"]):
-				printerr("Invalid color hex '%s' on tile '%s'" % [tile_data["color"], tile_key])
-
+				warning_messages.push_back("Invalid color hex '%s' on tile '%s'" % [tile_data["color"], tile_key])
 			tile.texture = data.get_texture_monochrome(tile_data["texture"])
 			tile.modulate = Color(tile_data["color"])
 
 		if tile_data.has("is_explored"):
-			tile.is_in_view = tile_data["is_explored"]
+			tile.is_explored = tile_data["is_explored"]
 
 		if tile_data.has("is_in_view"):
 			tile.is_in_view = tile_data["is_in_view"]
 
-		tilemap[tile_key] = tile
+		tiles[tile_key] = tile
 
-	return tilemap
+	return tiles
 
 
 func parse_tile_grid_position(tile_key: String) -> Vector2i:
 	var regex_result: RegExMatch = tile_key_regex.search(tile_key)
 	var grid_position: Vector2i
 
-	if regex_result:
-		grid_position.x = regex_result.strings[1].to_int()
-		grid_position.y = regex_result.strings[2].to_int()
-	else:
-		error = ERR_INVALID_DATA
-		error_message = "Invalid tilemap tile_key '%s'" % tile_key
+	if not regex_result:
+		warning_messages.push_back("Invalid tilemap tile_key '%s'" % tile_key)
+		return grid_position
 
+	grid_position.x = regex_result.strings[1].to_int()
+	grid_position.y = regex_result.strings[2].to_int()
 	return grid_position
 
 
 func parse_player(raw_data: Dictionary) -> Player:
 	var player: Player = player_scene.instantiate()
 
-	if raw_data.has("player"):
-		var player_data = raw_data["player"]
-		if player_data.has("position"):
-			var player_position = player_data["position"]
-			if not Utils.dictionary_has_all(player_position, ["x", "y"]):
-				error = ERR_INVALID_DATA
-				error_message = "Player without a position."
-			elif not player_data.has("texture"):
-				error = ERR_INVALID_DATA
-				error_message = "Player without a texture."
-			else:
-				player.grid_position = Vector2i(player_position["x"], player_position["y"])
-				player.texture = data.get_texture(player_data["texture"])
-		else:
-			error = ERR_INVALID_DATA
-			error_message = "Player without a position."
-	else:
-		error = ERR_INVALID_DATA
-		error_message = "Level without a player"
+	if not raw_data.has("player"):
+		warning_messages.push_back("Game without a player")
+		return player
 
+	var player_data = raw_data["player"]
+
+	if not player_data.has("position"):
+		warning_messages.push_back("Player without a position.")
+		return player
+
+	var player_position = player_data["position"]
+
+	if not Utils.dictionary_has_all(player_position, ["x", "y"]):
+		warning_messages.push_back("Player without a position.")
+		return player
+	
+	if not player_data.has("texture"):
+		warning_messages.push_back("Player without a texture.")
+		return player
+
+	player.grid_position = Vector2i(player_position["x"], player_position["y"])
+	player.texture = data.get_texture(player_data["texture"])
 
 	return player

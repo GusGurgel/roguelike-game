@@ -1,0 +1,48 @@
+{
+	"textures": {
+		"player": {
+			"x": 28.0,
+			"y": 0.0
+		},
+		"tree": {
+			"x": 0.0,
+			"y": 1.0
+		}
+	},
+	"layers": {
+		"floresta": {
+			"tiles": {
+				"2,2": {
+					"texture": "tree",
+					"color": "#0015f7"
+				},
+				"3,3": {
+					"texture": "tree",
+					"color": "#87d3ff"
+				},
+				"4,4": {
+					"texture": "tree",
+					"color": "#b200f2"
+				},
+				"5,5": {
+					"texture": "tree"
+				}
+			}
+		},
+		"xilito": {
+			"tiles": {
+				"2,2": {
+					"texture": "player",
+					"color": "#0015f7"
+				}
+			}
+		}
+	},
+	"player": {
+		"texture": "player",
+		"position": {
+			"x": 1.0,
+			"y": 1.0
+		}
+	}
+}
