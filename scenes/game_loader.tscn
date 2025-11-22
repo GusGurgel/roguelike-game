@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://b5ow6avcmd33a"]
-
-[ext_resource type="Script" uid="uid://3qalw6i64om7" path="res://scenes/game_loader.gd" id="1_cs2pe"]
-
-[node name="GameLoader" type="Node2D"]
-script = ExtResource("1_cs2pe")

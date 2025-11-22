@@ -2,9 +2,11 @@ extends Operation
 class_name GameParser
 ## Parsers a JSON into a playable game.
 
-var data: Game = Game.new()
+var data: Game = preload("res://scenes/game.tscn").instantiate()
 
 var player_scene = preload("res://scenes/player.tscn")
+var layer_scene = preload("res://scenes/layer.tscn")
+var tile_scene = preload("res://scenes/tile.tscn")
 
 var colored_texture: CompressedTexture2D = preload("res://images/tileset_colored.png")
 var monochrome_texture: CompressedTexture2D = preload("res://images/tileset_monochrome.png")
@@ -26,10 +28,13 @@ func load_from_path(path: String) -> void:
 	# Load textures.
 	data.textures = parse_textures(data.raw_data)
 
-	# Load tilemap.
+	# Load layers.
 	data.layers = parse_layers(data.raw_data)
 
-	# Load player
+	# Load current_layer
+	data.current_layer = parse_current_layer(data.raw_data)
+
+	# Load player.
 	data.player = parse_player(data.raw_data)
 
 
@@ -97,7 +102,7 @@ func parse_layers(raw_data: Dictionary) -> Dictionary[String, Layer]:
 
 
 func parse_layer(layer_key: String, layers_data: Dictionary) -> Layer:
-	var layer: Layer = Layer.new()
+	var layer: Layer = layer_scene.instantiate()
 	var layer_data = layers_data[layer_key]
 
 
@@ -115,7 +120,7 @@ func parse_layer_tiles(tiles_data: Dictionary) -> Dictionary[String, Tile]:
 
 	for tile_key in tiles_data:
 		var tile_data = tiles_data[tile_key]
-		var tile: Tile = Tile.new()
+		var tile: Tile = tile_scene.instantiate()
 
 		tile.grid_position = parse_tile_grid_position(tile_key)
 
@@ -183,3 +188,14 @@ func parse_player(raw_data: Dictionary) -> Player:
 	player.texture = data.get_texture(player_data["texture"])
 
 	return player
+
+func parse_current_layer(raw_data: Dictionary):
+	if not raw_data.has("current_layer"):
+		warning_messages.push_back("Game without a current_layer.")
+		return "default"
+	
+	if not raw_data["layers"].has(raw_data["current_layer"]):
+		warning_messages.push_back("current_layer '%s' doesn't exist" % raw_data["current_layer"])
+		return "default"
+
+	return raw_data["current_layer"]

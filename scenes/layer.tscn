@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://g4jik6tj8y6f"]
+
+[ext_resource type="Script" uid="uid://5l7jtdvxx3b5" path="res://resources/definitions/layer.gd" id="1_oobeh"]
+
+[node name="Layer" type="Node2D"]
+script = ExtResource("1_oobeh")
+
+[node name="Tiles" type="Node2D" parent="."]
+
+[node name="Entities" type="Node2D" parent="."]
