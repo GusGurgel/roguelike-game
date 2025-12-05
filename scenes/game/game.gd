@@ -36,8 +36,10 @@ var current_layer: String:
 
 
 func _ready() -> void:
-	## Set reference to game
+	## Set reference to game on player and field_of_view
 	player.game = self
+	$FieldOfView.game = self
+
 	## Add player
 	add_child(player)
 

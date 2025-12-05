@@ -15,12 +15,18 @@ var field_of_view: FieldOfView
 
 func _ready():
 	super._ready()
+	## Player need to be transparent
+	is_transparent = true
 
 	camera.position += texture.get_size() / 2
 	camera.zoom = Vector2.ONE * 3
 
 	if not game:
 		Utils.print_warning("Player won't have a reference to the current game.")
+		return
+
+	field_of_view = game.get_node("FieldOfView")
+	field_of_view.update_fov(grid_position)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -63,3 +69,4 @@ func _handle_movement(event_key: InputEventKey):
 		var tile: Tile = game.get_tile(grid_position + move)
 		if not tile or not tile.has_collision:
 			grid_position += move
+			field_of_view.update_fov(grid_position)

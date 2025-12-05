@@ -1,5 +1,6 @@
-extends Node2D
+extends CanvasLayer
 
+@export var game_viewport: SubViewport
 
 @onready var gamer_parser: GameParser = GameParser.new()
 @onready var game: Game
@@ -18,7 +19,7 @@ func _ready() -> void:
 	
 	game = gamer_parser.data
 	
-	add_child(game)
+	game_viewport.add_child(game)
 
 	var rooms: Array[Rect2i] = game.tile_painter.generate_basic_dungeon(
 		Rect2i(0, 0, 100, 100),
@@ -33,6 +34,10 @@ func _ready() -> void:
 		game.player.grid_position = rooms[0].get_center()
 
 	# $CanvasLayer/TextureRect.texture = game.get_texture_monochrome("brick_floor")
+	var field_of_view: FieldOfView = game.get_node("FieldOfView") as FieldOfView
+
+	if field_of_view:
+		field_of_view.update_fov(game.player.grid_position)
 
 
 func _unhandled_input(event: InputEvent) -> void:

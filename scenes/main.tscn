@@ -1,19 +1,49 @@
-[gd_scene load_steps=2 format=3 uid="uid://b5ow6avcmd33a"]
+[gd_scene load_steps=3 format=3 uid="uid://b5ow6avcmd33a"]
 
 [ext_resource type="Script" uid="uid://3qalw6i64om7" path="res://scenes/main.gd" id="1_o5qli"]
+[ext_resource type="Texture2D" uid="uid://bvhrbudhfluj2" path="res://images/icon.svg" id="2_0wfyh"]
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="CanvasLayer" node_paths=PackedStringArray("game_viewport")]
 script = ExtResource("1_o5qli")
+game_viewport = NodePath("Interface/FirstRow/GameViewportContainer/GameViewport")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
+[node name="Interface" type="VBoxContainer" parent="."]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -40.0
-offset_top = -40.0
-grow_horizontal = 0
-grow_vertical = 0
+offset_top = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FirstRow" type="HBoxContainer" parent="Interface"]
+layout_mode = 2
+
+[node name="GameViewportContainer" type="SubViewportContainer" parent="Interface/FirstRow"]
+texture_filter = 1
+layout_mode = 2
+
+[node name="GameViewport" type="SubViewport" parent="Interface/FirstRow/GameViewportContainer"]
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+size = Vector2i(600, 450)
+render_target_update_mode = 4
+
+[node name="Right" type="TextureRect" parent="Interface/FirstRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_0wfyh")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Interface"]
+layout_mode = 2
+
+[node name="Down" type="TextureRect" parent="Interface/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("2_0wfyh")
+
+[node name="TextureRect" type="TextureRect" parent="Interface/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_0wfyh")

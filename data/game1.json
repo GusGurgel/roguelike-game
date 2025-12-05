@@ -20,18 +20,20 @@
 	"tiles_presets": {
 		"brick_wall": {
 			"texture": "brick_wall",
-			"has_collision": true
+			"has_collision": true,
+			"is_transparent": false,
+			"color": "#6b2d00"
 		},
 		"brick_floor": {
 			"texture": "brick_floor",
 			"has_collision": false,
-			"color": "#bd5d04"
+			"is_transparent": true,
+			"color": "#3a3457"
 		}
 	},
 	"layers": {
 		"main": {
-			"tiles": {
-			}
+			"tiles": {}
 		}
 	},
 	"player": {

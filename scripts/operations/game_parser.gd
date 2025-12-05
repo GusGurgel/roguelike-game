@@ -158,6 +158,7 @@ func parse_tile(tile_data: Dictionary, tile_key: String) -> Tile:
 	# Set tile has_collision
 	if tile_data.has("has_collision"):
 		tile.has_collision = tile_data["has_collision"]
+		tile.is_transparent = not tile_data["has_collision"]
 
 	if tile_data.has("is_explored"):
 		tile.is_explored = tile_data["is_explored"]

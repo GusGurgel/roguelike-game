@@ -15,7 +15,7 @@ var is_explored: bool = false:
 		if is_explored and not visible:
 			visible = true
 
-var is_in_view: bool = true:
+var is_in_view: bool = false:
 	set(new_is_in_view):
 		if new_is_in_view:
 			is_explored = true
@@ -29,6 +29,7 @@ var is_in_view: bool = true:
 
 		is_in_view = new_is_in_view
 
+var is_transparent = false
 var has_collision = false
 
 ## Tile used as a base. [br][br]
@@ -39,6 +40,7 @@ var preset: Tile:
 		preset = new_preset
 		texture = preset.texture
 		has_collision = preset.has_collision
+		is_transparent = preset.is_transparent
 		modulate = preset.modulate
 
 func _ready():
@@ -54,5 +56,6 @@ static func clone(tile: Tile) -> Tile:
 	clone_tile.has_collision = tile.has_collision
 	clone_tile.is_explored = tile.is_explored
 	clone_tile.is_in_view = tile.is_in_view
+	clone_tile.is_transparent = tile.is_transparent
 
 	return clone_tile
