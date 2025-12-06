@@ -12,7 +12,7 @@ var grid_position: Vector2i = Vector2i(0, 0):
 
 var is_explored: bool = false:
 	set(new_is_explored):
-		if is_explored and not visible:
+		if new_is_explored and not visible:
 			visible = true
 
 		is_explored = new_is_explored
@@ -46,13 +46,15 @@ var preset: Tile:
 		has_collision = preset.has_collision
 		is_transparent = preset.is_transparent
 		modulate = preset.modulate
+		is_in_view = preset.is_in_view
+		is_explored = preset.is_explored
 
 
 func _ready():
 	centered = false
 
 
-func get_as_dict() -> Dictionary:
+func get_as_dict(return_grid_position: bool = false) -> Dictionary:
 	var result: Dictionary = {}
 
 	if self.preset_key != "":
@@ -68,6 +70,12 @@ func get_as_dict() -> Dictionary:
 			is_explored = self.is_explored,
 			is_in_view = self.is_in_view,
 			is_transparent = self.is_transparent
+		}
+	
+	if return_grid_position:
+		result["grid_position"] = {
+			x = self.grid_position.x,
+			y = self.grid_position.y
 		}
 
 	return result

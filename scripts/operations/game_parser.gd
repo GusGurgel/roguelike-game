@@ -7,12 +7,13 @@ var data: Game = preload("res://scenes/game/game.tscn").instantiate()
 var player_scene = preload("res://scenes/entities/player.tscn")
 var layer_scene = preload("res://scenes/layer.tscn")
 var tile_scene = preload("res://scenes/tile.tscn")
+var entity_scene = preload("res://scenes/entities/entity.tscn")
 
 var colored_texture: CompressedTexture2D = preload("res://images/tileset_colored.png")
 var monochrome_texture: CompressedTexture2D = preload("res://images/tileset_monochrome.png")
 var json_loader: JSONLoader = JSONLoader.new()
 
-var tile_key_regex: RegEx = RegEx.create_from_string("^(\\d+),(\\d+)$")
+var tile_key_regex: RegEx = RegEx.create_from_string("^-?(\\d+),-?(\\d+)$")
 var hex_color_regex: RegEx = RegEx.create_from_string("^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$")
 
 
@@ -109,11 +110,11 @@ func parse_layer(layer_key: String, layers_data: Dictionary) -> Layer:
 	var layer_data = layers_data[layer_key]
 
 
-	if not layer_data.has("tiles"):
-		warning_messages.push_back("Layer '%s' without tiles." % layer_key)
-		return layer
-
-	layer.tiles = parse_layer_tiles(layer_data["tiles"])
+	if layer_data.has("tiles"):
+		layer.tiles = parse_layer_tiles(layer_data["tiles"])
+	
+	if layer_data.has("entities"):
+		layer.entities = parse_layer_entities(layer_data["entities"])
 
 	return layer
 
@@ -122,15 +123,41 @@ func parse_layer_tiles(tiles_data: Dictionary) -> Dictionary[String, Tile]:
 	var tiles: Dictionary[String, Tile] = {}
 
 	for tile_key in tiles_data:
-		tiles[tile_key] = parse_tile(tiles_data[tile_key], tile_key)
+		var tile: Tile = tile_scene.instantiate()
+		var grid_position: Vector2i = parse_tile_grid_position(tile_key)
+		tiles_data[tile_key]["grid_position"] = {
+			x = grid_position.x,
+			y = grid_position.y
+		}
+		parse_tile(tiles_data[tile_key], tile)
+		tiles[tile_key] = tile
 
 	return tiles
 
 
-func parse_tile(tile_data: Dictionary, tile_key: String) -> Tile:
-	var tile: Tile = tile_scene.instantiate()
+func parse_layer_entities(entities_data: Dictionary) -> Dictionary[String, Entity]:
+	var entities: Dictionary[String, Entity] = {}
 
-	tile.grid_position = parse_tile_grid_position(tile_key)
+	for entity_key in entities_data:
+		var entity: Entity = entity_scene.instantiate()
+		var grid_position: Vector2i = parse_tile_grid_position(entity_key)
+		entities_data[entity_key]["grid_position"] = {
+			x = grid_position.x,
+			y = grid_position.y
+		}
+		parse_entity(entities_data[entity_key], entity)
+		entities[entity_key] = entity
+
+	return entities
+
+
+## Change tile object to the parsed data.
+func parse_tile(tile_data: Dictionary, tile: Tile) -> void:
+	if tile_data.has("grid_position"):
+		if Utils.dictionary_has_all(tile_data["grid_position"], ["x", "y"]):
+			tile.grid_position = Vector2i(tile_data["grid_position"]["x"], tile_data["grid_position"]["y"])
+		else:
+			warning_messages.push_back("Grid position of a tile is missing x or y.")
 
 	# Set preset
 	if tile_data.has("preset"):
@@ -140,38 +167,35 @@ func parse_tile(tile_data: Dictionary, tile_key: String) -> Tile:
 		tile.preset = preset
 		tile.preset_key = tile_data["preset"]
 
-	if tile_data.has("texture") and not tile.texture:
+	if tile_data.has("texture"):
 		tile.texture = data.get_texture(tile_data["texture"])
 
 	if not tile.texture:
-		warning_messages.push_back("Tile '%s' without a texture" % tile_key)
+		warning_messages.push_back("Tile without a texture.")
 		tile.texture = data.get_texture("default")
 
 	# Set tile color
 	if tile_data.has("color"):
 		if not hex_color_regex.search(tile_data["color"]):
-			warning_messages.push_back("Invalid color hex '%s' on tile '%s'" % [tile_data["color"], tile_key])
+			warning_messages.push_back("Invalid color hex '%s' on tile." % tile_data["color"])
 		if tile_data.has("texture"):
 			tile.texture = data.get_texture_monochrome(tile_data["texture"])
 		tile.modulate = Color(tile_data["color"])
 
-	# Set tile has_collision
+	if tile_data.has("is_transparent"):
+		tile.is_transparent = tile_data["is_transparent"]
+
 	if tile_data.has("has_collision"):
 		tile.has_collision = tile_data["has_collision"]
-		tile.is_transparent = not tile_data["has_collision"]
 
 	if tile_data.has("is_explored"):
 		tile.is_explored = tile_data["is_explored"]
-	else:
-		tile.is_explored = false
-
+		
 	if tile_data.has("is_in_view"):
 		tile.is_in_view = tile_data["is_in_view"]
 	else:
 		tile.is_in_view = false
 
-
-	return tile
 
 
 func parse_tile_grid_position(tile_key: String) -> Vector2i:
@@ -194,34 +218,29 @@ func parse_player(raw_data: Dictionary) -> Player:
 	var player: Player = player_scene.instantiate()
 
 	if not raw_data.has("player"):
-		warning_messages.push_back("Game without a player")
+		error_messages.push_back("Game without a player.")
 		return player
 
 	var player_data = raw_data["player"]
 
-	if not player_data.has("position"):
-		warning_messages.push_back("Player without a position.")
+	if not player_data.has("entity"):
+		error_messages.push_back("Player without a entity information")
 		return player
-
-	var player_position = player_data["position"]
-
-	if not Utils.dictionary_has_all(player_position, ["x", "y"]):
-		warning_messages.push_back("Player without a position.")
-		return player
-
-	player.grid_position = Vector2i(player_position["x"], player_position["y"])
-
-	if not player_data.has("tile") or not player_data["tile"].has("preset"):
-		warning_messages.push_back("Player without a tile preset.")
-		return player
-
-	var player_tile = parse_tile(player_data["tile"], "%d,%d" % [player.grid_position.x, player.grid_position.y])
-
-	player.preset = player_tile
-	player.preset_key = player_data["tile"]["preset"]
+	
+	parse_entity(player_data["entity"], player as Entity)
 	player.is_in_view = true
 
 	return player
+
+func parse_entity(entity_data: Dictionary, entity: Entity) -> void:
+	if not entity_data.has("tile"):
+		error_messages.push_back("Entity without a tile information.")
+		return
+	
+	parse_tile(entity_data["tile"], entity as Tile)
+
+	if entity_data.has("entity_name"):
+		entity.entity_name = entity_data["entity_name"]
 
 
 func parse_current_layer(raw_data: Dictionary):
@@ -245,8 +264,14 @@ func parse_tiles_presets(raw_data: Dictionary) -> Dictionary[String, Tile]:
 
 	if raw_data.has("tiles_presets"):
 		for tile_preset_key in raw_data["tiles_presets"]:
+			var tile: Tile = tile_scene.instantiate()
 			var tile_preset_data: Dictionary = raw_data["tiles_presets"][tile_preset_key]
-			tiles_presets[tile_preset_key] = parse_tile(tile_preset_data, "")
+			tile_preset_data["grid_position"] = {
+				x = 0,
+				y = 0
+			}
+			parse_tile(tile_preset_data, tile)
+			tiles_presets[tile_preset_key] = tile
 
 
 	return tiles_presets

@@ -45,7 +45,8 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _notification(what: int):
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
-		save_game()
+		pass
+		# save_game()
 
 
 func save_game() -> void:

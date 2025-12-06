@@ -74,13 +74,7 @@ func _handle_movement(event_key: InputEventKey):
 			field_of_view.update_fov(grid_position)
 
 
-func get_as_dict() -> Dictionary:
+func get_as_dict(_return_grid_position: bool = false) -> Dictionary:
 	return {
-		position = {
-			x = self.grid_position.x,
-			y = self.grid_position.y
-		},
-		tile = {
-			preset = self.preset_key
-		}
+		entity = super.get_as_dict(true),
 	}

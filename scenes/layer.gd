@@ -3,17 +3,30 @@ class_name Layer
 ## Represents a Game layer, contais the tiles and entities.
 
 var tiles: Dictionary[String, Tile]
-@onready var tiles_node: Node2D = $Tiles
+var entities: Dictionary[String, Entity]
+
+@onready var tiles_child = $Tiles
+@onready var entities_child = $Entities
+
 
 func _ready():
+	## Add tiles
 	for tile_key in tiles:
 		var tile: Tile = tiles[tile_key]
 
-		## Add tile or reparent to the current layer
 		if tile.get_parent():
-			tile.reparent(self)
+			tile.reparent(tiles_child)
 		else:
-			add_child(tile)
+			tiles_child.add_child(tile)
+
+	## Add entities
+	for entity_key in entities:
+		var entity: Entity = entities[entity_key]
+
+		if entity.get_parent():
+			entity.reparent(entities_child)
+		else:
+			entities_child.add_child(entity)
 	
 
 ## Return null if not exists

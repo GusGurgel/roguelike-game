@@ -14,3 +14,10 @@ class_name Entity
 
 func _ready() -> void:
 	super._ready()
+
+
+func get_as_dict(_return_grid_position: bool = true) -> Dictionary:
+	return {
+		tile = super.get_as_dict(true),
+		name = self.name
+	}

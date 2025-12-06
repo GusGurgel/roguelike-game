@@ -2,1156 +2,1157 @@
 	"current_layer": "main",
 	"layers": {
 		"main": {
-			"entities": {
-				"73,75": {
-					"tile": {
-						"preset": "orc"
-					}
-				}
-			},
 			"tiles": {
+				"0,-1": {
+					"is_explored": true,
+					"preset": "brick_wall"
+				},
+				"1,-1": {
+					"is_explored": true,
+					"preset": "brick_wall"
+				},
 				"10,39": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"10,40": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"10,41": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"10,42": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"10,43": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"10,44": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"10,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"10,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"10,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"10,48": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"10,49": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"10,50": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"10,51": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"10,52": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"10,53": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"10,54": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"11,39": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"11,40": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"11,41": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"11,42": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"11,43": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"11,44": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"11,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"11,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"11,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"11,48": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"11,49": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"11,50": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"11,51": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"11,52": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"11,53": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"11,54": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"12,39": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"12,40": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"12,41": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"12,42": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"12,43": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"12,44": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"12,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"12,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"12,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"12,48": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"12,49": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"12,50": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"12,51": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"12,52": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"12,53": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"12,54": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"13,39": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"13,40": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"13,41": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"13,42": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"13,43": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"13,44": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"13,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"13,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"13,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"13,48": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"13,49": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"13,50": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"13,51": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"13,52": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"13,53": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"13,54": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"14,39": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"14,40": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"14,41": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"14,42": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"14,43": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"14,44": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"14,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"14,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"14,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"14,48": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"14,49": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"14,50": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"14,51": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"14,52": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"14,53": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"14,54": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"15,39": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"15,40": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"15,41": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"15,42": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"15,43": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"15,44": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"15,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"15,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"15,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"15,48": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"15,49": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"15,50": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"15,51": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"15,52": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"15,53": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"15,54": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"16,39": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"16,40": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"16,41": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"16,42": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"16,43": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"16,44": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"16,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"16,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"16,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"16,48": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"16,49": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"16,50": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"16,51": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"16,52": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"16,53": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"16,54": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"17,39": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"17,40": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"17,41": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"17,42": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"17,43": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"17,44": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"17,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"17,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"17,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"17,48": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"17,49": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"17,50": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"17,51": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"17,52": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"17,53": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"17,54": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"18,39": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"18,40": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"18,41": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"18,42": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"18,43": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"18,44": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"18,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"18,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"18,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"18,48": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"18,49": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"18,50": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"18,51": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"18,52": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"18,53": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"18,54": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"19,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"19,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"19,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"19,48": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"19,49": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"20,38": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"20,39": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"20,40": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"20,41": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"20,42": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"20,43": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"20,44": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"20,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"20,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"20,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"20,48": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"20,49": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"20,50": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"20,51": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"20,52": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"20,53": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"20,54": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"20,55": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"21,38": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"21,39": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"21,40": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"21,41": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"21,42": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"21,43": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"21,44": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"21,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"21,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"21,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"21,48": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"21,49": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"21,50": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"21,51": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"21,52": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"21,53": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"21,54": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"21,55": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"22,38": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"22,39": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"22,40": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"22,41": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"22,42": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"22,43": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"22,44": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"22,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"22,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"22,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"22,48": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"22,49": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"22,50": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"22,51": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"22,52": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"22,53": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"22,54": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"22,55": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"23,38": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"23,39": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"23,40": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"23,41": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"23,42": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"23,43": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"23,44": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"23,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"23,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"23,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"23,48": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"23,49": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"23,50": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"23,51": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"23,52": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"23,53": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"23,54": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"23,55": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"24,38": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"24,39": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"24,40": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"24,41": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"24,42": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"24,43": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"24,44": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"24,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"24,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"24,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"24,48": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"24,49": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"24,50": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"24,51": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"24,52": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"24,53": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"24,54": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"24,55": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"24,56": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"24,57": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"24,58": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"25,38": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"25,39": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"25,40": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"25,41": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"25,42": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"25,43": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"25,44": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"25,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"25,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"25,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"25,48": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"25,49": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"25,50": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"25,51": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"25,52": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"25,53": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"25,54": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"25,55": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"25,56": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"25,57": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"25,58": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"25,59": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"26,38": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"26,39": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"26,40": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"26,41": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"26,42": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"26,43": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"26,44": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"26,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"26,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"26,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"26,48": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"26,49": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"26,50": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"26,51": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"26,52": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"26,53": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"26,54": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"26,55": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"26,56": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"26,57": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"26,58": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"26,59": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"26,60": {
@@ -1215,91 +1216,91 @@
 					"preset": "brick_wall"
 				},
 				"27,38": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"27,39": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"27,40": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"27,41": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"27,42": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"27,43": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"27,44": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"27,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"27,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"27,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"27,48": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"27,49": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"27,50": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"27,51": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"27,52": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"27,53": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"27,54": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"27,55": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"27,56": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"27,57": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"27,58": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"27,59": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"27,60": {
@@ -1363,91 +1364,91 @@
 					"preset": "brick_wall"
 				},
 				"28,38": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"28,39": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"28,40": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"28,41": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"28,42": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"28,43": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"28,44": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"28,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"28,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"28,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"28,48": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"28,49": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"28,50": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"28,51": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"28,52": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"28,53": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"28,54": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"28,55": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"28,56": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"28,57": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"28,58": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"28,59": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"28,60": {
@@ -1511,91 +1512,91 @@
 					"preset": "brick_wall"
 				},
 				"29,38": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"29,39": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"29,40": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"29,41": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"29,42": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"29,43": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"29,44": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"29,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"29,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"29,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"29,48": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"29,49": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"29,50": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"29,51": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"29,52": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"29,53": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"29,54": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"29,55": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"29,56": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"29,57": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"29,58": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"29,59": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"29,60": {
@@ -1659,91 +1660,91 @@
 					"preset": "brick_wall"
 				},
 				"30,38": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"30,39": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"30,40": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"30,41": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"30,42": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"30,43": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"30,44": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"30,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"30,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"30,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"30,48": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"30,49": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"30,50": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"30,51": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"30,52": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"30,53": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"30,54": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"30,55": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"30,56": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"30,57": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"30,58": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"30,59": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"30,60": {
@@ -1759,11 +1760,11 @@
 					"preset": "brick_floor"
 				},
 				"30,63": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"30,64": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"30,65": {
@@ -1807,111 +1808,111 @@
 					"preset": "brick_wall"
 				},
 				"31,38": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"31,39": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"31,40": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"31,41": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"31,42": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"31,43": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"31,44": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"31,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"31,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"31,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"31,48": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"31,49": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"31,50": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"31,51": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"31,52": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"31,53": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"31,54": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"31,55": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"31,56": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"31,57": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"31,58": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"31,59": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"31,60": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"31,61": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"31,62": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"31,63": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"31,64": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"31,65": {
@@ -1955,111 +1956,111 @@
 					"preset": "brick_wall"
 				},
 				"32,38": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"32,39": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"32,40": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"32,41": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"32,42": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"32,43": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"32,44": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"32,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"32,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"32,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"32,48": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"32,49": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"32,50": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"32,51": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"32,52": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"32,53": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"32,54": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"32,55": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"32,56": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"32,57": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"32,58": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"32,59": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"32,60": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"32,61": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"32,62": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"32,63": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"32,64": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"32,65": {
@@ -2103,83 +2104,83 @@
 					"preset": "brick_wall"
 				},
 				"33,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"33,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"33,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"33,48": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"33,49": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"33,50": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"33,51": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"33,52": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"33,53": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"33,54": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"33,55": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"33,56": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"33,57": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"33,58": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"33,59": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"33,60": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"33,61": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"33,62": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"33,63": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"33,64": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"33,65": {
@@ -2223,83 +2224,83 @@
 					"preset": "brick_wall"
 				},
 				"34,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"34,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"34,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"34,48": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"34,49": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"34,50": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"34,51": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"34,52": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"34,53": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"34,54": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"34,55": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"34,56": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"34,57": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"34,58": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"34,59": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"34,60": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"34,61": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"34,62": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"34,63": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"34,64": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"34,65": {
@@ -2343,83 +2344,83 @@
 					"preset": "brick_wall"
 				},
 				"35,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"35,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"35,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"35,48": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"35,49": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"35,50": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"35,51": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"35,52": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"35,53": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"35,54": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"35,55": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"35,56": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"35,57": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"35,58": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"35,59": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"35,60": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"35,61": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"35,62": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"35,63": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"35,64": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"35,65": {
@@ -2463,43 +2464,43 @@
 					"preset": "brick_wall"
 				},
 				"36,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"36,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"36,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"36,48": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"36,49": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"36,55": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"36,56": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"36,57": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"36,58": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"36,59": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"36,60": {
@@ -2507,19 +2508,19 @@
 					"preset": "brick_wall"
 				},
 				"36,61": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"36,62": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"36,63": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"36,64": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"36,65": {
@@ -2563,43 +2564,43 @@
 					"preset": "brick_wall"
 				},
 				"37,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"37,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"37,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"37,48": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"37,49": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"37,55": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"37,56": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"37,57": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"37,58": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"37,59": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"37,60": {
@@ -2611,11 +2612,11 @@
 					"preset": "brick_floor"
 				},
 				"37,62": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"37,63": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"37,64": {
@@ -2663,43 +2664,43 @@
 					"preset": "brick_wall"
 				},
 				"38,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"38,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"38,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"38,48": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"38,49": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"38,55": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"38,56": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"38,57": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"38,58": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"38,59": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"38,60": {
@@ -2763,43 +2764,43 @@
 					"preset": "brick_wall"
 				},
 				"39,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"39,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"39,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"39,48": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"39,49": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"39,55": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"39,56": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"39,57": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"39,58": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"39,59": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"39,60": {
@@ -2863,127 +2864,127 @@
 					"preset": "brick_wall"
 				},
 				"4,39": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"4,40": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"4,41": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"4,42": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"4,43": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"4,44": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"4,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"4,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"4,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"4,48": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"4,49": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"4,50": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"4,51": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"4,52": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"4,53": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"4,54": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"40,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"40,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"40,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"40,48": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"40,49": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"40,55": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"40,56": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"40,57": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"40,58": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"40,59": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"41,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"41,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"41,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"41,48": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"41,49": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"41,55": {
@@ -3007,23 +3008,23 @@
 					"preset": "brick_wall"
 				},
 				"42,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"42,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"42,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"42,48": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"42,49": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"42,55": {
@@ -3047,23 +3048,23 @@
 					"preset": "brick_wall"
 				},
 				"43,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"43,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"43,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"43,48": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"43,49": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"43,55": {
@@ -3155,23 +3156,23 @@
 					"preset": "brick_wall"
 				},
 				"44,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"44,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"44,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"44,48": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"44,49": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"44,55": {
@@ -3263,23 +3264,23 @@
 					"preset": "brick_wall"
 				},
 				"45,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"45,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"45,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"45,48": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"45,49": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"45,55": {
@@ -3371,23 +3372,23 @@
 					"preset": "brick_wall"
 				},
 				"46,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"46,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"46,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"46,48": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"46,49": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"46,55": {
@@ -3479,23 +3480,23 @@
 					"preset": "brick_wall"
 				},
 				"47,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"47,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"47,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"47,48": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"47,49": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"47,55": {
@@ -3587,23 +3588,23 @@
 					"preset": "brick_wall"
 				},
 				"48,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"48,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"48,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"48,48": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"48,49": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"48,55": {
@@ -3695,23 +3696,23 @@
 					"preset": "brick_wall"
 				},
 				"49,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"49,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"49,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"49,48": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"49,49": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"49,55": {
@@ -3803,87 +3804,87 @@
 					"preset": "brick_wall"
 				},
 				"5,39": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"5,40": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"5,41": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"5,42": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"5,43": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"5,44": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"5,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"5,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"5,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"5,48": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"5,49": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"5,50": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"5,51": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"5,52": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"5,53": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"5,54": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"50,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"50,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"50,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"50,48": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"50,49": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"50,55": {
@@ -3975,23 +3976,23 @@
 					"preset": "brick_wall"
 				},
 				"51,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"51,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"51,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"51,48": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"51,49": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"51,55": {
@@ -4083,23 +4084,23 @@
 					"preset": "brick_wall"
 				},
 				"52,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"52,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"52,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"52,48": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"52,49": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"52,55": {
@@ -4191,23 +4192,23 @@
 					"preset": "brick_wall"
 				},
 				"53,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"53,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"53,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"53,48": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"53,49": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"53,55": {
@@ -4299,23 +4300,23 @@
 					"preset": "brick_wall"
 				},
 				"54,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"54,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"54,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"54,48": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"54,49": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"54,55": {
@@ -4407,23 +4408,23 @@
 					"preset": "brick_wall"
 				},
 				"55,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"55,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"55,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"55,48": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"55,49": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"55,55": {
@@ -4515,23 +4516,23 @@
 					"preset": "brick_wall"
 				},
 				"56,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"56,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"56,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"56,48": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"56,49": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"56,55": {
@@ -4575,19 +4576,19 @@
 					"preset": "brick_wall"
 				},
 				"57,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"57,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"57,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"57,48": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"57,49": {
@@ -4683,15 +4684,15 @@
 					"preset": "brick_wall"
 				},
 				"58,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"58,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"58,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"58,48": {
@@ -4791,15 +4792,15 @@
 					"preset": "brick_wall"
 				},
 				"59,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"59,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"59,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"59,48": {
@@ -4899,79 +4900,79 @@
 					"preset": "brick_wall"
 				},
 				"6,39": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"6,40": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"6,41": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"6,42": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"6,43": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"6,44": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"6,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"6,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"6,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"6,48": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"6,49": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"6,50": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"6,51": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"6,52": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"6,53": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"6,54": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"60,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"60,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"60,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"60,48": {
@@ -5071,15 +5072,15 @@
 					"preset": "brick_wall"
 				},
 				"61,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"61,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"61,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"61,48": {
@@ -5179,15 +5180,15 @@
 					"preset": "brick_wall"
 				},
 				"62,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"62,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"62,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"62,48": {
@@ -5287,15 +5288,15 @@
 					"preset": "brick_wall"
 				},
 				"63,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"63,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"63,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"63,48": {
@@ -5431,15 +5432,15 @@
 					"preset": "brick_wall"
 				},
 				"64,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"64,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"64,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"64,48": {
@@ -5579,15 +5580,15 @@
 					"preset": "brick_wall"
 				},
 				"65,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"65,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"65,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"65,48": {
@@ -5727,15 +5728,15 @@
 					"preset": "brick_wall"
 				},
 				"66,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"66,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"66,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"66,48": {
@@ -5875,15 +5876,15 @@
 					"preset": "brick_wall"
 				},
 				"67,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"67,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"67,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"67,48": {
@@ -6023,15 +6024,15 @@
 					"preset": "brick_wall"
 				},
 				"68,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"68,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"68,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"68,48": {
@@ -6143,15 +6144,15 @@
 					"preset": "brick_wall"
 				},
 				"69,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"69,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"69,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"69,48": {
@@ -6307,67 +6308,67 @@
 					"preset": "brick_wall"
 				},
 				"7,39": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"7,40": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"7,41": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"7,42": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"7,43": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"7,44": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"7,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"7,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"7,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"7,48": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"7,49": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"7,50": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"7,51": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"7,52": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"7,53": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"7,54": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"70,15": {
@@ -6423,15 +6424,15 @@
 					"preset": "brick_wall"
 				},
 				"70,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"70,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"70,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"70,48": {
@@ -6639,15 +6640,15 @@
 					"preset": "brick_wall"
 				},
 				"71,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"71,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"71,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"71,48": {
@@ -8567,67 +8568,67 @@
 					"preset": "brick_wall"
 				},
 				"8,39": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"8,40": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"8,41": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"8,42": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"8,43": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"8,44": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"8,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"8,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"8,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"8,48": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"8,49": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"8,50": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"8,51": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"8,52": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"8,53": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"8,54": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"80,15": {
@@ -10043,79 +10044,97 @@
 					"preset": "brick_wall"
 				},
 				"9,39": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
 				},
 				"9,40": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"9,41": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"9,42": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"9,43": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"9,44": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"9,45": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"9,46": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"9,47": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"9,48": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"9,49": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"9,50": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"9,51": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"9,52": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"9,53": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_floor"
 				},
 				"9,54": {
-					"is_explored": false,
+					"is_explored": true,
 					"preset": "brick_wall"
+				}
+			},
+			"entities": {
+				"72,81": {
+					"entity_name": "Orc",
+					"tile": {
+						"grid_position": {
+							"x": 72,
+							"y": 82
+						},
+						"is_explored": true,
+						"preset": "orc",
+						"is_in_view": true
+					}
 				}
 			}
 		}
 	},
 	"player": {
-		"position": {
-			"x": 71,
-			"y": 78
-		},
-		"tile": {
-			"preset": "warrior"
+		"entity": {
+			"entity_name": "Silver Warrior",
+			"tile": {
+				"grid_position": {
+					"x": 72,
+					"y": 81
+				},
+				"is_explored": true,
+				"preset": "warrior"
+			}
 		}
 	},
 	"textures": {
@@ -10143,22 +10162,40 @@
 	"tiles_presets": {
 		"brick_floor": {
 			"color": "#bd5d04",
+			"grid_position": {
+				"x": 0,
+				"y": 0
+			},
 			"has_collision": false,
 			"is_transparent": true,
 			"texture": "brick_floor"
 		},
 		"brick_wall": {
+			"grid_position": {
+				"x": 0,
+				"y": 0
+			},
 			"has_collision": true,
 			"is_transparent": false,
 			"texture": "brick_wall"
 		},
 		"orc": {
+			"grid_position": {
+				"x": 0,
+				"y": 0
+			},
 			"has_collision": true,
 			"is_transparent": true,
-			"texture": "orc"
+			"is_in_view": true,
+			"texture": "orc",
+			"color": "#00f064"
 		},
 		"warrior": {
 			"color": "#f2f2f2",
+			"grid_position": {
+				"x": 0,
+				"y": 0
+			},
 			"has_collision": true,
 			"is_transparent": true,
 			"texture": "warrior"
