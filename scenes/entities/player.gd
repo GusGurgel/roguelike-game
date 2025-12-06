@@ -15,7 +15,6 @@ var field_of_view: FieldOfView
 
 func _ready():
 	super._ready()
-	entity_name = "player"
 
 	## Player need to be transparent
 	is_transparent = true
