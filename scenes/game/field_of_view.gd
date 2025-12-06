@@ -2,109 +2,120 @@ extends Node
 class_name FieldOfView
 
 var game: Game
-var fov_radius: int = 8  # Aumentei um pouco para testar melhor o efeito
+var fov_radius: int = 8
 
-# Armazena os tiles que estão atualmente visíveis para podermos 
-# "apagá-los" antes de calcular o próximo frame.
+# Armazena os tiles visíveis do frame ANTERIOR
 var _visible_tiles: Array[Tile] = []
+# Armazena os tiles visíveis sendo calculados no frame ATUAL
+var _current_frame_visible: Array[Tile] = []
 
-# Mapeamento de multiplicadores para transformar as coordenadas de cada octante
-# para um sistema de coordenadas padrão (x positivo, y positivo)
 const OCTANT_TRANSFORMS = [
-	Vector2i(1, 0), Vector2i(0, 1),   # 0: E-NE
-	Vector2i(0, 1), Vector2i(1, 0),   # 1: N-NE
-	Vector2i(0, 1), Vector2i(-1, 0),  # 2: N-NW
-	Vector2i(-1, 0), Vector2i(0, 1),  # 3: W-NW
+	Vector2i(1, 0), Vector2i(0, 1), # 0: E-NE
+	Vector2i(0, 1), Vector2i(1, 0), # 1: N-NE
+	Vector2i(0, 1), Vector2i(-1, 0), # 2: N-NW
+	Vector2i(-1, 0), Vector2i(0, 1), # 3: W-NW
 	Vector2i(-1, 0), Vector2i(0, -1), # 4: W-SW
 	Vector2i(0, -1), Vector2i(-1, 0), # 5: S-SW
-	Vector2i(0, -1), Vector2i(1, 0),  # 6: S-SE
-	Vector2i(1, 0), Vector2i(0, -1),  # 7: E-SE
+	Vector2i(0, -1), Vector2i(1, 0), # 6: S-SE
+	Vector2i(1, 0), Vector2i(0, -1), # 7: E-SE
 ]
 
-## Chamado pelo Player. Agora só precisamos da nova posição.
-## O sistema limpa automaticamente o estado anterior.
 func update_fov(origin: Vector2i):
-	# 1. Resetar tiles visíveis do frame anterior
-	for tile in _visible_tiles:
-		if tile:
-			tile.is_in_view = false
-	_visible_tiles.clear()
+	# 1. Limpa a lista temporária do frame atual
+	_current_frame_visible.clear()
 
 	# 2. O tile onde o jogador está é sempre visível
 	_mark_visible(origin)
 
 	# 3. Calcular FOV para os 8 octantes
-	# O algoritmo processa um cone de 45 graus por vez
 	for i in range(8):
 		_cast_light(
-			origin, 
-			1, 
-			1.0, 
-			0.0, 
-			OCTANT_TRANSFORMS[i * 2], 
+			origin, 1, 1.0, 0.0,
+			OCTANT_TRANSFORMS[i * 2],
 			OCTANT_TRANSFORMS[i * 2 + 1]
 		)
+	
+	# 4. Processar ENTITITES/TILES que saíram do campo de visão (Exit)
+	# Se estava visível antes, mas não está na lista nova, saiu da visão.
+	for tile in _visible_tiles:
+		if is_instance_valid(tile) and not tile in _current_frame_visible:
+			tile.is_in_view = false
+			if tile is Entity:
+				tile._on_field_of_view_exit()
 
-## Função recursiva que projeta a "luz"
-## row: distância atual do jogador
-## start_slope: inclinação inicial do feixe de luz (1.0 = diagonal)
-## end_slope: inclinação final do feixe (0.0 = reto)
+	# 5. Processar ENTITIES/TILES que entraram no campo de visão (Enter) e atualizar visual
+	for tile in _current_frame_visible:
+		if is_instance_valid(tile):
+			# Se não estava na lista anterior, acabou de entrar
+			if not tile in _visible_tiles:
+				if tile is Entity:
+					tile._on_field_of_view_enter()
+			
+			# Garante que visualmente está aceso (o setter da classe Tile lida com a cor)
+			tile.is_in_view = true
+
+	# 6. Atualiza a lista oficial para o próximo frame
+	_visible_tiles = _current_frame_visible.duplicate()
+
 func _cast_light(origin: Vector2i, row: int, start_slope: float, end_slope: float, xx: Vector2i, xy: Vector2i):
 	if start_slope < end_slope:
 		return
 
 	var next_start_slope = start_slope
-	
+
 	for i in range(row, fov_radius + 1):
 		var blocked = false
 		var dy = -i
-		
-		# Loop através das células na linha atual dentro dos slopes permitidos
-		for dx in range(-i, 1): # dx vai de -row até 0 (no sistema transformado)
-			# Cálculo das inclinações para a célula atual
-			# Usamos 0.5 para simular o centro do tile
+
+		for dx in range(-i, 1):
 			var l_slope = (dx - 0.5) / (dy + 0.5)
 			var r_slope = (dx + 0.5) / (dy - 0.5)
-			
+
 			if start_slope < r_slope:
 				continue
-			
+
 			if end_slope > l_slope:
 				break
-			
-			# Transforma a coordenada local do octante para coordenada global do mapa
-			# A matemática aqui usa os vetores base passados (xx, xy) para rotacionar o grid
+
 			var map_x = origin.x + (dx * xx.x + dy * xy.x)
 			var map_y = origin.y + (dx * xx.y + dy * xy.y)
 			var pos = Vector2i(map_x, map_y)
-			
-			# Distância euclidiana simples para garantir que o FOV seja circular e não quadrado
+
 			if (dx * dx + dy * dy) < (fov_radius * fov_radius):
 				_mark_visible(pos)
+
+			# --- MUDANÇA PRINCIPAL NA LÓGICA DE BLOQUEIO ---
+			# Agora verificamos o array retornado por get_tiles
+			var tiles_at_pos = game.get_tiles(pos)
+			var is_current_pos_transparent = true
 			
-			var tile = game.get_tile(pos)
+			# Se QUALQUER coisa na célula bloquear a visão, ela é considerada bloqueada
+			for t in tiles_at_pos:
+				if t and not t.is_transparent:
+					is_current_pos_transparent = false
+					break
 			
+			# Lógica de Shadowcasting padrão
 			if blocked:
-				# Se estávamos bloqueados anteriormente e encontramos um tile transparente (buraco na parede)
-				if tile and tile.is_transparent:
+				if is_current_pos_transparent:
 					blocked = false
 					start_slope = next_start_slope
 				else:
 					next_start_slope = r_slope
-					
-			elif tile and not tile.is_transparent:
-				# Se encontramos uma parede nova vindo de um espaço vazio
+			elif not is_current_pos_transparent:
 				blocked = true
 				next_start_slope = r_slope
-				# Recursão: Dispara um novo feixe de luz para a área transparente anterior
 				_cast_light(origin, i + 1, start_slope, l_slope, xx, xy)
-		
+
 		if blocked:
 			break
 
-## Helper para marcar o tile e adicionar ao cache
+## Helper atualizado para lidar com Array[Tile]
 func _mark_visible(pos: Vector2i):
-	var tile: Tile = game.get_tile(pos)
-	if tile:
-		tile.is_in_view = true
-		_visible_tiles.append(tile)
+	var tiles_at_pos = game.get_tiles(pos)
+	
+	# Adiciona todos os tiles/entidades dessa posição à lista do frame atual
+	for tile in tiles_at_pos:
+		if tile: # Verifica null, pois seu get_tiles pode retornar [Obj, null]
+			if not tile in _current_frame_visible:
+				_current_frame_visible.append(tile)

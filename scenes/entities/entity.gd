@@ -21,3 +21,13 @@ func get_as_dict(_return_grid_position: bool = true) -> Dictionary:
 		tile = super.get_as_dict(true),
 		name = self.name
 	}
+
+
+## Callback called when the enters the field of view of the player
+func _on_field_of_view_enter() -> void:
+	print("enter")
+
+
+## Callback called when the entity exits the field of view of the player
+func _on_field_of_view_exit() -> void:
+	print("exit")

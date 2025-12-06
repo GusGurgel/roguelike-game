@@ -67,8 +67,8 @@ func _handle_movement(event_key: InputEventKey):
 
 	## Check for collision and change player position
 	if game:
-		var tile: Tile = game.get_tile(grid_position + move)
-		if not tile or not tile.has_collision:
+		var tiles: Array[Tile] = game.get_tiles(grid_position + move)
+		if not Utils.any_of_array_has_propriety_with_value(tiles, "has_collision", true):
 			grid_position += move
 			field_of_view.update_fov(grid_position)
 

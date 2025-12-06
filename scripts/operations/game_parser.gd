@@ -141,7 +141,10 @@ func parse_layer_entities(entities_data: Dictionary) -> Dictionary[String, Entit
 	for entity_key in entities_data:
 		var entity: Entity = entity_scene.instantiate()
 		var grid_position: Vector2i = parse_tile_grid_position(entity_key)
-		entities_data[entity_key]["grid_position"] = {
+		if not entities_data[entity_key].has("tile"):
+			warning_messages.push_back("Entity without a tile information.")
+			continue
+		entities_data[entity_key]["tile"]["grid_position"] = {
 			x = grid_position.x,
 			y = grid_position.y
 		}
@@ -195,7 +198,6 @@ func parse_tile(tile_data: Dictionary, tile: Tile) -> void:
 		tile.is_in_view = tile_data["is_in_view"]
 	else:
 		tile.is_in_view = false
-
 
 
 func parse_tile_grid_position(tile_key: String) -> Vector2i:

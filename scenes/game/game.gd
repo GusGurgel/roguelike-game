@@ -61,13 +61,15 @@ func set_tile_by_preset(
 		preset_key = "default"
 
 	if set_tile_mode == Globals.SetTileMode.OVERRIDE_ONLY_WITH_COLLISION:
-		var current_tile: Tile = get_tile(pos)
-		if current_tile and not current_tile.has_collision:
+		var current_tiles: Array[Tile] = get_tiles(pos)
+		## There are no tile with has_collision == true
+		if not Utils.any_of_array_has_propriety_with_value(current_tiles, "has_collision", true):
 			return
 	
 	if set_tile_mode == Globals.SetTileMode.OVERRIDE_ONLY_WITH_NOT_COLLISION:
-		var current_tile: Tile = get_tile(pos)
-		if current_tile and current_tile.has_collision:
+		var current_tiles: Array[Tile] = get_tiles(pos)
+		## There are no tile with has_collision == false
+		if not Utils.any_of_array_has_propriety_with_value(current_tiles, "has_collision", false):
 			return
 	
 	tile = tile_scene.instantiate()
@@ -77,9 +79,9 @@ func set_tile_by_preset(
 	layers[current_layer].set_tile(tile)
 
 
-## Return tile from current layer
-func get_tile(pos: Vector2i) -> Tile:
-	return layers[current_layer].get_tile(pos)
+## Return tiles from current layer on pos
+func get_tiles(pos: Vector2i) -> Array[Tile]:
+	return layers[current_layer].get_tiles(pos)
 
 
 ## Erase tile from the current layer. Return true if a tile was removed

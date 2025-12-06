@@ -29,9 +29,12 @@ func _ready():
 			entities_child.add_child(entity)
 	
 
-## Return null if not exists
-func get_tile(pos: Vector2i) -> Tile:
-	return tiles.get(vector2i_to_string_key(pos))
+## Return all tiles of a grid_position. Including basic tiles and entity tiles
+func get_tiles(pos: Vector2i) -> Array[Tile]:
+	return [
+		tiles.get(vector2i_to_string_key(pos)),
+		entities.get(vector2i_to_string_key(pos))
+	]
 
 
 func set_tile(tile: Tile) -> void:

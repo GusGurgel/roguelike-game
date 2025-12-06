@@ -9,9 +9,20 @@ func dictionary_has_all(dict: Dictionary, keys: Array[String]) -> bool:
 	
 	return true
 
+
+## Return true if any element of array has propriety == value. Else, returns false
+func any_of_array_has_propriety_with_value(array: Array, propriety: String, value: Variant) -> bool:
+	for element in array:
+		if element and element.get(propriety) == value:
+			return true
+	
+	return false
+
+
 ## Converts integer grid position to a global position
 func grid_position_to_global_position(grid_position: Vector2i) -> Vector2:
 	return grid_position * Globals.tile_size
+
 
 ## Converts float global position to a integer grid_position
 func global_position_to_grid_position(global_position: Vector2) -> Vector2i:

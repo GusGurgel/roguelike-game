@@ -10109,13 +10109,10 @@
 				}
 			},
 			"entities": {
-				"72,81": {
+				"72,82": {
 					"entity_name": "Orc",
 					"tile": {
-						"grid_position": {
-							"x": 72,
-							"y": 82
-						},
+						"has_collision": true,
 						"is_explored": true,
 						"preset": "orc",
 						"is_in_view": true
