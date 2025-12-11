@@ -19,6 +19,25 @@ func any_of_array_has_propriety_with_value(array: Array, propriety: String, valu
 	return false
 
 
+## Updates an node using values from a dictionary, based on a list of properties.
+## If the property exists in the dictionary and is in properties, it is copied.
+## If it doesn't exist and is in warning, a warning is logged.
+func copy_from_dict_if_exists(
+		node: Node,
+		dictionary: Dictionary,
+		properties: Array[String] = [],
+		warning: Array[String] = []
+) -> void:
+	for key in properties:
+		if dictionary.has(key):
+			if node.get(key) != null:
+				node.set(key, dictionary.get(key))
+			else:
+				print_warning("Object %s does not have property '%s'." % [node, key])
+		elif warning.has(key):
+			print_warning("Tried to copy property '%s' to node '%s', but dictionary is missing it." % [key, node.name])
+
+
 ## Converts integer grid position to a global position
 func grid_position_to_global_position(grid_position: Vector2i) -> Vector2:
 	return grid_position * Globals.tile_size

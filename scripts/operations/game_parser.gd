@@ -17,7 +17,7 @@ var tile_key_regex: RegEx = RegEx.create_from_string("^-?(\\d+),-?(\\d+)$")
 var hex_color_regex: RegEx = RegEx.create_from_string("^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$")
 
 
-func load_from_path(path: String) -> void:
+func load_from_path(path: String, game_ui: GameUI) -> void:
 	# Load raw_data.
 	json_loader.load_from_path(path)
 	if json_loader.has_erros():
@@ -25,6 +25,8 @@ func load_from_path(path: String) -> void:
 		return
 	
 	data.raw_data = json_loader.data
+
+	data.game_ui = game_ui
 	
 	# Load textures.
 	data.textures = parse_textures(data.raw_data)
@@ -40,6 +42,13 @@ func load_from_path(path: String) -> void:
 
 	# Load player.
 	data.player = parse_player(data.raw_data)
+
+	Utils.copy_from_dict_if_exists(
+		data,
+		data.raw_data,
+		["turn"],
+		["turn"]
+	)
 
 
 ## Parse all textures [br][br]
@@ -162,13 +171,12 @@ func parse_tile(tile_data: Dictionary, tile: Tile) -> void:
 		else:
 			warning_messages.push_back("Grid position of a tile is missing x or y.")
 
-	# Set preset
 	if tile_data.has("preset"):
-		var preset: Tile = data.get_tile_preset(tile_data["preset"])
-		if not preset:
+		if data.get_tile_preset(tile_data["preset"]):
+			tile.preset = tile_data["preset"]
+			tile.copy_basic_proprieties(data.get_tile_preset(tile_data["preset"]))
+		else:
 			warning_messages.push_back("Preset '%s' not exists." % tile_data["preset"])
-		tile.preset = preset
-		tile.preset_key = tile_data["preset"]
 
 	if tile_data.has("texture"):
 		tile.texture = data.get_texture(tile_data["texture"])
@@ -177,7 +185,6 @@ func parse_tile(tile_data: Dictionary, tile: Tile) -> void:
 		warning_messages.push_back("Tile without a texture.")
 		tile.texture = data.get_texture("default")
 
-	# Set tile color
 	if tile_data.has("color"):
 		if not hex_color_regex.search(tile_data["color"]):
 			warning_messages.push_back("Invalid color hex '%s' on tile." % tile_data["color"])
@@ -185,19 +192,11 @@ func parse_tile(tile_data: Dictionary, tile: Tile) -> void:
 			tile.texture = data.get_texture_monochrome(tile_data["texture"])
 		tile.modulate = Color(tile_data["color"])
 
-	if tile_data.has("is_transparent"):
-		tile.is_transparent = tile_data["is_transparent"]
-
-	if tile_data.has("has_collision"):
-		tile.has_collision = tile_data["has_collision"]
-
-	if tile_data.has("is_explored"):
-		tile.is_explored = tile_data["is_explored"]
-		
-	if tile_data.has("is_in_view"):
-		tile.is_in_view = tile_data["is_in_view"]
-	else:
-		tile.is_in_view = false
+	Utils.copy_from_dict_if_exists(
+		tile,
+		tile_data,
+		["is_transparent", "has_collision", "is_explored"]
+	)
 
 
 func parse_tile_grid_position(tile_key: String) -> Vector2i:
@@ -220,17 +219,18 @@ func parse_player(raw_data: Dictionary) -> Player:
 	var player: Player = player_scene.instantiate()
 
 	if not raw_data.has("player"):
-		error_messages.push_back("Game without a player.")
+		warning_messages.push_back("Game without a player.")
 		return player
 
 	var player_data = raw_data["player"]
 
 	if not player_data.has("entity"):
-		error_messages.push_back("Player without a entity information")
+		warning_messages.push_back("Player without a entity information")
 		return player
 	
 	parse_entity(player_data["entity"], player as Entity)
 	player.is_in_view = true
+
 
 	return player
 
@@ -241,8 +241,17 @@ func parse_entity(entity_data: Dictionary, entity: Entity) -> void:
 	
 	parse_tile(entity_data["tile"], entity as Tile)
 
-	if entity_data.has("entity_name"):
-		entity.entity_name = entity_data["entity_name"]
+	Utils.copy_from_dict_if_exists(
+		entity,
+		entity_data,
+		[
+			"entity_name",
+			"max_health",
+			"health",
+			"max_mana",
+			"mana"
+		]
+	)
 
 
 func parse_current_layer(raw_data: Dictionary):

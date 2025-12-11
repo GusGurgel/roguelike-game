@@ -1,0 +1,230 @@
+[gd_scene load_steps=8 format=3 uid="uid://bwtdbxpqslxmb"]
+
+[ext_resource type="Script" uid="uid://hdlm0wo67drn" path="res://scenes/ui/game_ui.gd" id="1_gwk6t"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sugp2"]
+bg_color = Color(0.12225222, 0.12225225, 0.12225217, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbgi4"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.3647059, 0.105882354, 0.10980392, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o5qli"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.827451, 0.4392157, 0.4509804, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jyhfs"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.41960785, 0.47843137, 0.6, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0wfyh"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.7176471, 0.81960785, 0.8862745, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gwk6t"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.18359044, 0.18359044, 0.18359044, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[node name="GameUI" type="TabContainer" node_paths=PackedStringArray("prompt", "turn_value_label", "health_progress_bar", "health_label", "mana_progress_bar", "mana_label")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_styles/tabbar_background = SubResource("StyleBoxFlat_sugp2")
+current_tab = 0
+script = ExtResource("1_gwk6t")
+prompt = NodePath("Game/FirstRow/Right/PromptBackgroundMarginContainer/PromptBackground/PromptMarginContainer/PromptRichTextLabel")
+turn_value_label = NodePath("Game/FirstRow/LeftMargin/Left/ValuesVBoxContainer/TurnValueLabel")
+health_progress_bar = NodePath("Game/FirstRow/LeftMargin/Left/ValuesVBoxContainer/PlayerHealthHBoxContainer/PlayerHealthProgressBar")
+health_label = NodePath("Game/FirstRow/LeftMargin/Left/ValuesVBoxContainer/PlayerHealthHBoxContainer/PlayerHealthLabel")
+mana_progress_bar = NodePath("Game/FirstRow/LeftMargin/Left/ValuesVBoxContainer/PlayerManaHBoxContainer/PlayerManaProgressBar")
+mana_label = NodePath("Game/FirstRow/LeftMargin/Left/ValuesVBoxContainer/PlayerManaHBoxContainer/PlayerManaLabel")
+
+[node name="Game" type="Control" parent="."]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="FirstRow" type="HBoxContainer" parent="Game"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LeftMargin" type="MarginContainer" parent="Game/FirstRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Left" type="HBoxContainer" parent="Game/FirstRow/LeftMargin"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AttributesMarginContainer" type="MarginContainer" parent="Game/FirstRow/LeftMargin/Left"]
+layout_mode = 2
+theme_override_constants/margin_right = 5
+
+[node name="AttributesVBoxContainer" type="VBoxContainer" parent="Game/FirstRow/LeftMargin/Left/AttributesMarginContainer"]
+custom_minimum_size = Vector2(51.87, 0)
+layout_mode = 2
+
+[node name="TurnLabel" type="Label" parent="Game/FirstRow/LeftMargin/Left/AttributesMarginContainer/AttributesVBoxContainer"]
+custom_minimum_size = Vector2(0, 27)
+layout_mode = 2
+text = "Turn"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="HealthLabel" type="Label" parent="Game/FirstRow/LeftMargin/Left/AttributesMarginContainer/AttributesVBoxContainer"]
+custom_minimum_size = Vector2(0, 27)
+layout_mode = 2
+text = "Health"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ManaLabel" type="Label" parent="Game/FirstRow/LeftMargin/Left/AttributesMarginContainer/AttributesVBoxContainer"]
+custom_minimum_size = Vector2(0, 27)
+layout_mode = 2
+text = "Mana"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ValuesVBoxContainer" type="VBoxContainer" parent="Game/FirstRow/LeftMargin/Left"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TurnValueLabel" type="Label" parent="Game/FirstRow/LeftMargin/Left/ValuesVBoxContainer"]
+custom_minimum_size = Vector2(0, 27)
+layout_mode = 2
+text = "2003"
+vertical_alignment = 1
+
+[node name="PlayerHealthHBoxContainer" type="HBoxContainer" parent="Game/FirstRow/LeftMargin/Left/ValuesVBoxContainer"]
+layout_mode = 2
+
+[node name="PlayerHealthProgressBar" type="ProgressBar" parent="Game/FirstRow/LeftMargin/Left/ValuesVBoxContainer/PlayerHealthHBoxContainer"]
+custom_minimum_size = Vector2(0, 27)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/background = SubResource("StyleBoxFlat_tbgi4")
+theme_override_styles/fill = SubResource("StyleBoxFlat_o5qli")
+value = 50.0
+show_percentage = false
+
+[node name="PlayerHealthLabel" type="Label" parent="Game/FirstRow/LeftMargin/Left/ValuesVBoxContainer/PlayerHealthHBoxContainer"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+text = "50/100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayerManaHBoxContainer" type="HBoxContainer" parent="Game/FirstRow/LeftMargin/Left/ValuesVBoxContainer"]
+layout_mode = 2
+
+[node name="PlayerManaProgressBar" type="ProgressBar" parent="Game/FirstRow/LeftMargin/Left/ValuesVBoxContainer/PlayerManaHBoxContainer"]
+custom_minimum_size = Vector2(0, 27)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/background = SubResource("StyleBoxFlat_jyhfs")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0wfyh")
+value = 50.0
+show_percentage = false
+
+[node name="PlayerManaLabel" type="Label" parent="Game/FirstRow/LeftMargin/Left/ValuesVBoxContainer/PlayerManaHBoxContainer"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+text = "50/100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Right" type="VBoxContainer" parent="Game/FirstRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PromptBackgroundMarginContainer" type="MarginContainer" parent="Game/FirstRow/Right"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="PromptBackground" type="Panel" parent="Game/FirstRow/Right/PromptBackgroundMarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_gwk6t")
+
+[node name="PromptMarginContainer" type="MarginContainer" parent="Game/FirstRow/Right/PromptBackgroundMarginContainer/PromptBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="PromptRichTextLabel" type="RichTextLabel" parent="Game/FirstRow/Right/PromptBackgroundMarginContainer/PromptBackground/PromptMarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "1
+2
+3
+4
+5
+"
+scroll_following = true
+
+[node name="Debug" type="Control" parent="."]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1

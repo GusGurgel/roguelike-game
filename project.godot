@@ -24,7 +24,7 @@ Globals="*res://scenes/globals/globals.gd"
 
 window/size/viewport_width=800
 window/size/viewport_height=600
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
 
 [input]
 

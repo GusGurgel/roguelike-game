@@ -14,6 +14,19 @@ var textures: Dictionary[String, AtlasTexture]
 ## Dictionary of presets of tiles
 var tiles_presets: Dictionary[String, Tile]
 
+var turn: int = 0:
+	set(new_turn):
+		# Alert layer entities
+		var current_layer_entities: Dictionary[String, Entity] = get_current_layer().entities
+		for entity_key in current_layer_entities:
+			var entity: Entity = current_layer_entities[entity_key]
+			entity._on_turn_updated(turn, new_turn)
+
+		game_ui.turn_value_label.text = str(new_turn)
+		turn = new_turn
+
+
+var game_ui: GameUI
 
 ## All layers of the game
 var layers: Dictionary[String, Layer]
@@ -36,7 +49,7 @@ var current_layer: String:
 
 
 func _ready() -> void:
-	## Set reference to game on player and field_of_view
+	## Set reference to game on player and field_of_view.
 	player.game = self
 	$FieldOfView.game = self
 
@@ -44,37 +57,36 @@ func _ready() -> void:
 	add_child(player)
 
 
-## Set a tile by a preset [br][br]
-##
-## If preset_key == "", nothing happens
+## Set a tile by a preset. [br]
+## If preset == "", nothing happens.
 func set_tile_by_preset(
-	preset_key: String,
+	preset: String,
 	pos: Vector2i,
 	set_tile_mode: Globals.SetTileMode = Globals.SetTileMode.OVERRIDE_ALL
 ) -> void:
-	if preset_key == "":
+	if preset == "":
 		return
 
 	var tile: Tile
-	if not tiles_presets.has(preset_key):
-		Utils.print_warning("Tile preset '%s' not exists." % preset_key)
-		preset_key = "default"
+	if get_tile_preset(preset):
+		Utils.print_warning("Tile preset '%s' not exists." % preset)
+		preset = "default"
 
 	if set_tile_mode == Globals.SetTileMode.OVERRIDE_ONLY_WITH_COLLISION:
 		var current_tiles: Array[Tile] = get_tiles(pos)
-		## There are no tile with has_collision == true
+		## There are no tiles with has_collision == true.
 		if not Utils.any_of_array_has_propriety_with_value(current_tiles, "has_collision", true):
 			return
 	
 	if set_tile_mode == Globals.SetTileMode.OVERRIDE_ONLY_WITH_NOT_COLLISION:
 		var current_tiles: Array[Tile] = get_tiles(pos)
-		## There are no tile with has_collision == false
+		## There are no tiles with has_collision == false.
 		if not Utils.any_of_array_has_propriety_with_value(current_tiles, "has_collision", false):
 			return
 	
 	tile = tile_scene.instantiate()
-	tile.preset = tiles_presets[preset_key]
-	tile.preset_key = preset_key
+	tile.preset = preset
+	tile.copy_basic_proprieties(get_tile_preset(preset))
 	tile.grid_position = pos
 	layers[current_layer].set_tile(tile)
 
@@ -106,13 +118,16 @@ func get_texture_monochrome(id_texture: String) -> AtlasTexture:
 	else:
 		return textures["monochrome_default"]
 
+
 ## Return tile preset, or null if not exists
 func get_tile_preset(id_tile_preset) -> Tile:
 	return tiles_presets.get(id_tile_preset)
 
+
+func get_current_layer() -> Layer:
+	return layers[current_layer]
+
 	
-## Returns a JSON string representing the current Game
-## TODO
 func get_as_dict() -> Dictionary:
 	var result: Dictionary = self.raw_data
 

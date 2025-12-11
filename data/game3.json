@@ -10111,6 +10111,10 @@
 			"entities": {
 				"72,82": {
 					"entity_name": "Orc",
+					"max_health": 30,
+					"health": 53,
+					"max_mana": 3,
+					"mana": 3,
 					"tile": {
 						"has_collision": true,
 						"is_explored": true,
@@ -10123,6 +10127,10 @@
 	},
 	"player": {
 		"entity": {
+			"max_health": 40,
+			"health": 40,
+			"max_mana": 10,
+			"mana": 10,
 			"entity_name": "Silver Warrior",
 			"tile": {
 				"grid_position": {
@@ -10197,5 +10205,6 @@
 			"is_transparent": true,
 			"texture": "warrior"
 		}
-	}
+	},
+	"turn": 0
 }

@@ -29,6 +29,12 @@ func _ready():
 	field_of_view = game.get_node("FieldOfView")
 	field_of_view.update_fov(grid_position)
 
+	# Call set methods to trigger UI update
+	set_health(health)
+	set_max_health(max_health)
+	set_mana(mana)
+	set_max_mana(max_mana)
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	var event_key = event as InputEventKey
@@ -71,9 +77,38 @@ func _handle_movement(event_key: InputEventKey):
 		if not Utils.any_of_array_has_propriety_with_value(tiles, "has_collision", true):
 			grid_position += move
 			field_of_view.update_fov(grid_position)
-
+			game.turn += 1
+		else:
+			pass
+			## Search for a possible entity blocking the map
+			# for tile 
+		
 
 func get_as_dict(_return_grid_position: bool = false) -> Dictionary:
 	return {
 		entity = super.get_as_dict(true),
 	}
+
+
+func set_health(new_health: int) -> void:
+	health = new_health
+	game.game_ui.health_progress_bar.value = health
+	game.game_ui.health_label.text = "%d/%d" % [health, max_health]
+
+
+func set_max_health(new_max_health: int) -> void:
+	max_health = new_max_health
+	game.game_ui.health_progress_bar.max_value = max_health
+	game.game_ui.health_label.text = "%d/%d" % [health, max_health]
+
+
+func set_mana(new_mana: int) -> void:
+	mana = new_mana
+	game.game_ui.mana_progress_bar.value = mana
+	game.game_ui.mana_label.text = "%d/%d" % [mana, max_mana]
+
+
+func set_max_mana(new_max_mana: int) -> void:
+	max_mana = new_max_mana
+	game.game_ui.mana_progress_bar.max_value = max_mana
+	game.game_ui.mana_label.text = "%d/%d" % [mana, max_mana]

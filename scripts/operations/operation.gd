@@ -3,7 +3,7 @@ class_name Operation
 ## Represents a fallible operation with a array of "error_messages", and a
 ## array of "warning messages".[br][br]
 ##
-## By convention, every resource that's inherit Operation has a data attribute
+## By convention, every resource that's inherit Operation has a data property
 ## as the result of the operation.
 
 var error_messages: PackedStringArray = []

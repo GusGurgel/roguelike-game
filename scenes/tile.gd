@@ -1,8 +1,6 @@
 extends Sprite2D
 class_name Tile
 
-static var tile_scene = preload("res://scenes/tile.tscn")
-
 
 var grid_position: Vector2i = Vector2i(0, 0):
 	set(new_grid_position):
@@ -35,31 +33,33 @@ var is_in_view: bool = false:
 var is_transparent = false
 var has_collision = false
 
-## Tile used as a base. [br][br]
-##
-## It takes this parameters into account: [i][b]texture, has_collision, modulate (color)[/b][/i].
-var preset_key: String = ""
-var preset: Tile:
-	set(new_preset):
-		preset = new_preset
-		texture = preset.texture
-		has_collision = preset.has_collision
-		is_transparent = preset.is_transparent
-		modulate = preset.modulate
-		is_in_view = preset.is_in_view
-		is_explored = preset.is_explored
+## Tile used as a base.
+var preset: String = ""
+
+var tile_name: String = ""
 
 
 func _ready():
 	centered = false
+	# This triggers the modulate modification of tile.
+	is_in_view = is_in_view
+
+
+## Copy information from tile. [br]
+## Considers follows proprieties: texture, has_collision, is_transparent, modulate.
+func copy_basic_proprieties(tile: Tile) -> void:
+	self.texture = tile.texture
+	self.has_collision = tile.has_collision
+	self.is_transparent = tile.is_transparent
+	self.modulate = tile.modulate
 
 
 func get_as_dict(return_grid_position: bool = false) -> Dictionary:
 	var result: Dictionary = {}
 
-	if self.preset_key != "":
+	if preset != "":
 		result = {
-			preset = self.preset_key,
+			preset = self.preset,
 			is_explored = self.is_explored
 		}
 	else:

@@ -1,13 +1,14 @@
 extends CanvasLayer
 
 @export var game_viewport: SubViewport
+@export var game_ui: GameUI
 
 @onready var gamer_parser: GameParser = GameParser.new()
 @onready var game: Game
 
 
 func _ready() -> void:
-	gamer_parser.load_from_path("res://data/data_saved.json")
+	gamer_parser.load_from_path("res://data/game3.json", game_ui)
 
 	if gamer_parser.has_erros():
 		for error_message in gamer_parser.error_messages:

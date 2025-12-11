@@ -1,11 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://b5ow6avcmd33a"]
 
 [ext_resource type="Script" uid="uid://3qalw6i64om7" path="res://scenes/main.gd" id="1_o5qli"]
-[ext_resource type="Texture2D" uid="uid://bvhrbudhfluj2" path="res://images/icon.svg" id="2_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://bwtdbxpqslxmb" path="res://scenes/ui/game_ui.tscn" id="2_0wfyh"]
 
-[node name="Main" type="CanvasLayer" node_paths=PackedStringArray("game_viewport")]
+[node name="Main" type="CanvasLayer" node_paths=PackedStringArray("game_viewport", "game_ui")]
 script = ExtResource("1_o5qli")
 game_viewport = NodePath("Interface/FirstRow/GameViewportContainer/GameViewport")
+game_ui = NodePath("Interface/SecondRow/GameUI")
 
 [node name="Interface" type="VBoxContainer" parent="."]
 anchors_preset = 15
@@ -25,25 +26,12 @@ layout_mode = 2
 [node name="GameViewport" type="SubViewport" parent="Interface/FirstRow/GameViewportContainer"]
 handle_input_locally = false
 canvas_item_default_texture_filter = 0
-size = Vector2i(600, 450)
+size = Vector2i(800, 400)
 render_target_update_mode = 4
 
-[node name="Right" type="TextureRect" parent="Interface/FirstRow"]
-layout_mode = 2
-size_flags_horizontal = 3
-texture = ExtResource("2_0wfyh")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Interface"]
+[node name="SecondRow" type="HBoxContainer" parent="Interface"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Down" type="TextureRect" parent="Interface/HBoxContainer"]
+[node name="GameUI" parent="Interface/SecondRow" instance=ExtResource("2_0wfyh")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource("2_0wfyh")
-
-[node name="TextureRect" type="TextureRect" parent="Interface/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-texture = ExtResource("2_0wfyh")
