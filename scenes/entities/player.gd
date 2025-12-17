@@ -79,17 +79,43 @@ func _handle_movement(event_key: InputEventKey):
 			field_of_view.update_fov(grid_position)
 			game.turn += 1
 		else:
-			pass
-			## Search for a possible entity blocking the map
-			# for tile 
+			for tile in tiles:
+				var enemy: Enemy = tile as Enemy
+				if enemy:
+					var is_enemy_dead: bool = enemy.get_hit(self, get_damage())
+					if is_enemy_dead:
+						game.game_ui.prompt_text(
+							"[color=#88A8C5]%s[/color] kills [color=#d37073]%s[/color]" % [entity_name, enemy.entity_name]
+						)
+					else:
+						game.game_ui.prompt_text(
+							"[color=#88A8C5]%s[/color] hits [color=#d37073]%s[/color]. (Damage: %d; %s Life: %d)" % \
+							[
+								entity_name,
+								enemy.entity_name,
+								get_damage(),
+								enemy.entity_name,
+								enemy.health
+							]
+						)
+
+
+func get_hit(entity: Entity, damage: int) -> bool:
+	self.health -= damage
+	set_health(health)
+
+	game.game_ui.prompt_text(
+		"[color=#d37073]%s[/color] hits [color=#88A8C5]%s[/color]. (Damage: %d)" % \
+		[
+			entity.entity_name,
+			entity_name,
+			damage,
+		]
+	)
+
+	return false
+
 		
-
-func get_as_dict(_return_grid_position: bool = false) -> Dictionary:
-	return {
-		entity = super.get_as_dict(true),
-	}
-
-
 func set_health(new_health: int) -> void:
 	health = new_health
 	game.game_ui.health_progress_bar.value = health
@@ -112,3 +138,9 @@ func set_max_mana(new_max_mana: int) -> void:
 	max_mana = new_max_mana
 	game.game_ui.mana_progress_bar.max_value = max_mana
 	game.game_ui.mana_label.text = "%d/%d" % [mana, max_mana]
+
+
+func get_as_dict(_return_grid_position: bool = false) -> Dictionary:
+	return {
+		entity = super.get_as_dict(true),
+	}

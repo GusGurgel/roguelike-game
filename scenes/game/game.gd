@@ -16,11 +16,15 @@ var tiles_presets: Dictionary[String, Tile]
 
 var turn: int = 0:
 	set(new_turn):
-		# Alert layer entities
+		# Alert layer entities thats the turn has change
 		var current_layer_entities: Dictionary[String, Entity] = get_current_layer().entities
 		for entity_key in current_layer_entities:
 			var entity: Entity = current_layer_entities[entity_key]
-			entity._on_turn_updated(turn, new_turn)
+			if is_instance_valid(entity):
+				entity._on_turn_updated(turn, new_turn)
+			else:
+				# Remove invalid entity
+				current_layer_entities.erase(entity_key)
 
 		game_ui.turn_value_label.text = str(new_turn)
 		turn = new_turn

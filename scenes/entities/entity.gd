@@ -30,6 +30,8 @@ class_name Entity
 
 @export var entity_name: String = ""
 
+@export var base_damage: int = 0
+
 
 func _ready() -> void:
 	super._ready()
@@ -42,16 +44,37 @@ func get_as_dict(_return_grid_position: bool = true) -> Dictionary:
 	}
 
 
-## Callback called when the enters the field of view of the player
+## Callback called when the enters the field of view of the player.
 func _on_field_of_view_enter() -> void:
 	pass
 
 
-## Callback called when the entity exits the field of view of the player
+## Callback called when the entity exits the field of view of the player.
 func _on_field_of_view_exit() -> void:
 	pass
 
 
-## Callback called when the game turn is changed
+## Callback called when the game turn is changed.
 func _on_turn_updated(old_turn: int, new_turn: int) -> void:
 	pass
+
+
+## Hit the current entity, return if the entity die true if the entity die.
+func get_hit(entity: Entity, damage: int) -> bool:
+	self.health -= damage
+
+	if self.health <= 0:
+		kill()
+		return true
+	else:
+		return false
+
+
+## Get the entity damage
+func get_damage() -> int:
+	return base_damage
+
+
+## Basic kill function. Just remove the node from the scene.
+func kill() -> void:
+	queue_free()

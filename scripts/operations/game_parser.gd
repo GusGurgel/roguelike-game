@@ -7,7 +7,11 @@ var data: Game = preload("res://scenes/game/game.tscn").instantiate()
 var player_scene = preload("res://scenes/entities/player.tscn")
 var layer_scene = preload("res://scenes/layer.tscn")
 var tile_scene = preload("res://scenes/tile.tscn")
+
+# Entities scenes
 var entity_scene = preload("res://scenes/entities/entity.tscn")
+var enemy_scene = preload("res://scenes/entities/enemy.tscn")
+
 
 var colored_texture: CompressedTexture2D = preload("res://images/tileset_colored.png")
 var monochrome_texture: CompressedTexture2D = preload("res://images/tileset_monochrome.png")
@@ -34,15 +38,17 @@ func load_from_path(path: String, game_ui: GameUI) -> void:
 	# Load tiles_presets
 	data.tiles_presets = parse_tiles_presets(data.raw_data)
 
+	# Load player.
+	data.player = parse_player(data.raw_data)
+
 	# Load layers.
 	data.layers = parse_layers(data.raw_data)
 
 	# Load current_layer
 	data.current_layer = parse_current_layer(data.raw_data)
 
-	# Load player.
-	data.player = parse_player(data.raw_data)
 
+	# Direct copies from the raw data
 	Utils.copy_from_dict_if_exists(
 		data,
 		data.raw_data,
@@ -148,17 +154,31 @@ func parse_layer_entities(entities_data: Dictionary) -> Dictionary[String, Entit
 	var entities: Dictionary[String, Entity] = {}
 
 	for entity_key in entities_data:
-		var entity: Entity = entity_scene.instantiate()
-		var grid_position: Vector2i = parse_tile_grid_position(entity_key)
-		if not entities_data[entity_key].has("tile"):
-			warning_messages.push_back("Entity without a tile information.")
-			continue
-		entities_data[entity_key]["tile"]["grid_position"] = {
-			x = grid_position.x,
-			y = grid_position.y
-		}
-		parse_entity(entities_data[entity_key], entity)
-		entities[entity_key] = entity
+		var entity_data: Dictionary = entities_data[entity_key]
+		var node: Node = null
+
+		if entity_data.has("type") and str(entity_data["type"]).to_lower() == "enemy":
+			node = enemy_scene.instantiate()
+			var node_enemy = node as Enemy
+
+			if node_enemy:
+				node_enemy.player = data.player
+		else:
+			node = entity_scene.instantiate()
+		
+		var node_entity = node as Entity
+
+		if node_entity:
+			var grid_position: Vector2i = parse_tile_grid_position(entity_key)
+			if not entity_data.has("tile"):
+				warning_messages.push_back("Entity without a tile information.")
+				continue
+			entity_data["tile"]["grid_position"] = {
+				x = grid_position.x,
+				y = grid_position.y
+			}
+			parse_entity(entity_data, node_entity)
+			entities[entity_key] = node_entity
 
 	return entities
 
@@ -249,7 +269,8 @@ func parse_entity(entity_data: Dictionary, entity: Entity) -> void:
 			"max_health",
 			"health",
 			"max_mana",
-			"mana"
+			"mana",
+			"base_damage"
 		]
 	)
 

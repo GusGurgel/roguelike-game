@@ -10110,6 +10110,8 @@
 			},
 			"entities": {
 				"72,82": {
+					"type": "Enemy",
+					"base_damage": 5,
 					"entity_name": "Orc",
 					"max_health": 30,
 					"health": 53,
@@ -10131,6 +10133,7 @@
 			"health": 40,
 			"max_mana": 10,
 			"mana": 10,
+			"base_damage": 10,
 			"entity_name": "Silver Warrior",
 			"tile": {
 				"grid_position": {

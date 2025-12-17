@@ -5,6 +5,8 @@ class_name Layer
 var tiles: Dictionary[String, Tile]
 var entities: Dictionary[String, Entity]
 
+
+
 @onready var tiles_child = $Tiles
 @onready var entities_child = $Entities
 
@@ -31,11 +33,24 @@ func _ready():
 
 ## Return all tiles of a grid_position. Including basic tiles and entity tiles
 func get_tiles(pos: Vector2i) -> Array[Tile]:
-	return [
-		tiles.get(vector2i_to_string_key(pos)),
-		entities.get(vector2i_to_string_key(pos))
-	]
+	var tiles_arr: Array[Tile] = []
 
+	var tile: Variant = tiles.get(vector2i_to_string_key(pos))
+	var entity: Variant = entities.get(vector2i_to_string_key(pos))
+
+
+	if tile != null and is_instance_valid(tile):
+		tile = tile as Tile
+		if tile:
+			tiles_arr.push_back(tile)
+	
+	if entity != null and is_instance_valid(entity):
+		entity = entity as Entity
+		if entity:
+			tiles_arr.push_back(entity)
+
+
+	return tiles_arr
 
 func set_tile(tile: Tile) -> void:
 	var pos_key: String = vector2i_to_string_key(tile.grid_position)
