@@ -86,6 +86,10 @@ func set_tile(tile: Tile) -> void:
 	else:
 		add_child(tile)
 
+	## Update Top Left and Top Right
+	top_left = top_left.min(tile.grid_position)
+	bottom_right = bottom_right.max(tile.grid_position)
+
 	
 ## Return true if erased, else false
 func erase_tile(pos: Vector2i) -> bool:
