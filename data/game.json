@@ -10124,20 +10124,34 @@
 						"preset": "healing_potion_10"
 					},
 					"type": "healing_potion",
-					"usable": true,
-					"equippable": true,
-					"equipped": true,
-					"health_increase": 10
+					"health_increase": 10,
+					"description": "A potion that's heals 10 points of health"
 				},
 				"71,82": {
 					"tile": {
 						"preset": "healing_potion_40"
 					},
 					"type": "healing_potion",
-					"usable": true,
-					"equippable": true,
-					"equipped": true,
-					"health_increase": 40
+					"health_increase": 40,
+					"description": "A potion that's heals 40 points of health"
+				},
+				"71,84": {
+					"tile": {
+						"preset": "sword"
+					},
+					"type": "melee_weapon",
+					"damage": 999,
+					"description": "The better sword in the world!"
+				},
+				"73,84": {
+					"tile": {
+						"preset": "sword",
+						"tile_name": "Shit Sword",
+						"color": "#9effb1"
+					},
+					"type": "melee_weapon",
+					"damage": 1,
+					"description": "The shitest sword in the world!"
 				}
 			}
 		}
@@ -10186,6 +10200,10 @@
 		"healing_potion": {
 			"x": 33,
 			"y": 13
+		},
+		"sword": {
+			"x": 32,
+			"y": 6
 		}
 	},
 	"tiles_presets": {
@@ -10248,6 +10266,11 @@
 			"color": "#ff4b45",
 			"texture": "healing_potion",
 			"tile_name": "Healing Potion +40"
+		},
+		"sword": {
+			"color": "#fff",
+			"texture": "sword",
+			"tile_name": "Iron Sword"
 		}
 	},
 	"turn": 0

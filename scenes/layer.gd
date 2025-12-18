@@ -99,9 +99,9 @@ func set_tile(tile: Tile) -> void:
 	tiles[pos_key] = tile
 	## Add tile or reparent to the current layer.
 	if tile.get_parent():
-		tile.reparent(self)
+		tile.reparent(tiles_child)
 	else:
-		add_child(tile)
+		tiles_child.add_child(tile)
 
 	## Update Top Left and Top Right.
 	top_left = top_left.min(tile.grid_position)
@@ -117,6 +117,23 @@ func erase_tile(pos: Vector2i) -> bool:
 		tiles.erase(pos_key)
 		return true
 	return false
+
+
+## Return true if item was set, else false
+func set_item(item: Item) -> bool:
+	var pos_key: String = Utils.vector2i_to_string(item.grid_position)
+
+	if itens.get(pos_key) != null:
+		return false
+	
+	itens[pos_key] = item
+	## Add tile or reparent to the current layer.
+	if item.get_parent():
+		item.reparent(itens_child)
+	else:
+		itens_child.add_child(item)
+	
+	return true
 
 
 func erase_item(pos: Vector2i, free_item_node: bool = false) -> void:

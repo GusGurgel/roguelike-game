@@ -74,7 +74,9 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 theme_override_styles/tabbar_background = SubResource("StyleBoxFlat_sugp2")
-current_tab = 1
+tab_alignment = 1
+current_tab = 0
+tab_focus_mode = 0
 script = ExtResource("1_gwk6t")
 prompt = NodePath("Game/FirstRow/Right/PromptBackgroundMarginContainer/PromptBackground/PromptMarginContainer/PromptRichTextLabel")
 debug_ui = NodePath("Debug")
@@ -86,7 +88,6 @@ mana_progress_bar = NodePath("Game/FirstRow/LeftMargin/Left/ValuesVBoxContainer/
 mana_label = NodePath("Game/FirstRow/LeftMargin/Left/ValuesVBoxContainer/PlayerManaHBoxContainer/PlayerManaLabel")
 
 [node name="Game" type="Control" parent="."]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -229,6 +230,7 @@ text = "1
 scroll_following = true
 
 [node name="Invetory" type="ScrollContainer" parent="."]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
@@ -236,16 +238,16 @@ metadata/_tab_index = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/margin_left = 20
+theme_override_constants/margin_left = 40
 theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
+theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 20
 
 [node name="Inventory" type="HFlowContainer" parent="Invetory/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/h_separation = 40
+theme_override_constants/h_separation = 60
 theme_override_constants/v_separation = 20
 
 [node name="Debug" parent="." instance=ExtResource("2_xjfbv")]

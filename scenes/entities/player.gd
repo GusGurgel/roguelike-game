@@ -15,10 +15,9 @@ var game: Game
 ## Reference to the field of view Node
 var field_of_view: FieldOfView
 
-var global_inventory_id = 0
-var inventory: Dictionary[String, Item] = {}
-
 var item_frame_scene = preload("res://scenes/ui/item_frame.tscn")
+
+var melee_weapon: MeleeWeapon = null
 
 func _ready():
 	super._ready()
@@ -184,12 +183,17 @@ func set_max_mana(new_max_mana: int) -> void:
 func add_item_to_inventory(item: Item) -> void:
 	game.get_current_layer().erase_item(item.grid_position)
 	item.visible = false
-	item.id = global_inventory_id
-	global_inventory_id += 1
 
 	var item_frame: ItemFrame = item_frame_scene.instantiate()
 	item_frame.item = item
 	game.game_ui.add_item_frame(item_frame)
+
+
+func get_damage() -> int:
+	if melee_weapon != null:
+		return melee_weapon.damage
+	else:
+		return base_damage
 
 
 func get_as_dict(_return_grid_position: bool = false) -> Dictionary:

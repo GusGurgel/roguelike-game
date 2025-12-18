@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://nrxpl8jw5xl6"]
+
+[ext_resource type="Script" uid="uid://2nruuadkkiwc" path="res://scenes/itens/melee_weapon.gd" id="2_1ejo6"]
+
+[node name="MeleeWeapon" type="Sprite2D"]
+script = ExtResource("2_1ejo6")
+metadata/_custom_type_script = "uid://bu1dpd6te50b3"

@@ -5,7 +5,9 @@ class_name Item
 @export var equippable: bool = false
 @export var equipped: bool = false
 @export var type: String = "default"
-@export var id: int
+@export var description: String = "default"
+
+signal on_unequip
 
 func _ready():
 	super._ready()
@@ -19,8 +21,15 @@ func use() -> void:
 
 
 func equip() -> void:
-	print("Equipping %s..." % tile_name)
+	equipped = true
 
 
 func unequip() -> void:
-	print("Unequipping %s..." % tile_name)
+	equipped = false
+	on_unequip.emit()
+
+func drop():
+	grid_position = Globals.game.player.grid_position
+	var item_was_drop = Globals.game.get_current_layer().set_item(self)
+
+	return item_was_drop

@@ -15,6 +15,7 @@ var enemy_scene = preload("res://scenes/entities/enemy.tscn")
 # Items scenes
 var item_scene = preload("res://scenes/itens/item.tscn")
 var item_healing_potion_scene = preload("res://scenes/itens/healing_potion.tscn")
+var item_melee_weapon_scene = preload("res://scenes/itens/melee_weapon.tscn")
 
 
 var colored_texture: CompressedTexture2D = preload("res://images/tileset_colored.png")
@@ -208,6 +209,16 @@ func parse_layer_itens(itens_data: Dictionary) -> Dictionary[String, Item]:
 					"health_increase"
 				]
 			)
+		elif Utils.dict_has_and_is_equal_lower_string(item_data, "type", "melee_weapon"):
+			node = item_melee_weapon_scene.instantiate()
+
+			Utils.copy_from_dict_if_exists(
+				node,
+				item_data,
+				[
+					"damage"
+				]
+			)
 		else:
 			node = item_scene.instantiate()
 		
@@ -236,7 +247,8 @@ func parse_item(item_data: Dictionary, item: Item) -> void:
 		[
 			"usable",
 			"equippable",
-			"equipped"
+			"equipped",
+			"description"
 		]
 	)
 
