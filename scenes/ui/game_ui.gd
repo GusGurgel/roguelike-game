@@ -2,6 +2,8 @@ extends TabContainer
 class_name GameUI
 
 @export var prompt: RichTextLabel
+@export var debug_ui: DebugUI
+@export var inventory: FlowContainer
 
 @export_group("Player Infos")
 @export var turn_value_label: Label
@@ -10,7 +12,6 @@ class_name GameUI
 @export var mana_progress_bar: ProgressBar
 @export var mana_label: Label
 
-@onready var debug_ui: DebugUI = $Debug
 
 func _ready():
 	clear_prompt()
@@ -25,3 +26,6 @@ func prompt_text(text: String, timestamp: bool = true) -> void:
 		text = "[color=#A8A8A8][%s][/color] %s\n" % [Time.get_time_string_from_system(), text]
 
 	prompt.text = prompt.text + text
+
+func add_item_frame(item_frame: ItemFrame) -> void:
+	inventory.add_child(item_frame)

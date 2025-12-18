@@ -10117,6 +10117,28 @@
 					},
 					"turns_to_move": 1
 				}
+			},
+			"itens": {
+				"71,81": {
+					"tile": {
+						"preset": "healing_potion_10"
+					},
+					"type": "healing_potion",
+					"usable": true,
+					"equippable": true,
+					"equipped": true,
+					"health_increase": 10
+				},
+				"71,82": {
+					"tile": {
+						"preset": "healing_potion_40"
+					},
+					"type": "healing_potion",
+					"usable": true,
+					"equippable": true,
+					"equipped": true,
+					"health_increase": 40
+				}
 			}
 		}
 	},
@@ -10160,6 +10182,10 @@
 		"warrior": {
 			"x": 28.0,
 			"y": 0.0
+		},
+		"healing_potion": {
+			"x": 33,
+			"y": 13
 		}
 	},
 	"tiles_presets": {
@@ -10212,6 +10238,16 @@
 			"has_collision": true,
 			"is_transparent": true,
 			"texture": "warrior"
+		},
+		"healing_potion_10": {
+			"color": "#f2c6c4",
+			"texture": "healing_potion",
+			"tile_name": "Healing Potion +10"
+		},
+		"healing_potion_40": {
+			"color": "#ff4b45",
+			"texture": "healing_potion",
+			"tile_name": "Healing Potion +40"
 		}
 	},
 	"turn": 0

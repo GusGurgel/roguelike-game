@@ -11,6 +11,8 @@
         "reparent",
         "tilemap",
         "tileset",
-        "tscn"
+        "tscn",
+        "unequip",
+        "Unequipping"
     ]
 }

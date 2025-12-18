@@ -56,6 +56,7 @@ func copy_basic_proprieties(tile: Tile) -> void:
 	self.has_collision = tile.has_collision
 	self.is_transparent = tile.is_transparent
 	self.modulate = tile.modulate
+	self.tile_name = tile.tile_name
 
 
 func get_as_dict(return_grid_position: bool = false) -> Dictionary:

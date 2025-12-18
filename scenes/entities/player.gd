@@ -1,6 +1,7 @@
 extends Entity
 class_name Player
 
+
 ## Max camera zoom multiplier
 @export var max_camera_zoom: int = 4
 
@@ -14,6 +15,10 @@ var game: Game
 ## Reference to the field of view Node
 var field_of_view: FieldOfView
 
+var global_inventory_id = 0
+var inventory: Dictionary[String, Item] = {}
+
+var item_frame_scene = preload("res://scenes/ui/item_frame.tscn")
 
 func _ready():
 	super._ready()
@@ -45,12 +50,23 @@ func _unhandled_input(event: InputEvent) -> void:
 		if event_key.is_pressed():
 			_handle_movement(event_key)
 			_handle_camera_zoom(event_key)
+			_handle_grab_item(event_key)
 			if event_key.is_action("wait"):
 				if game:
 					pass_turns(1)
 
+func _handle_grab_item(event_key: InputEventKey) -> void:
+	if event_key.is_action("grab"):
+		for tile in game.get_current_layer().get_tiles(grid_position):
+			var tile_item: Item = tile as Item
+			if tile_item:
+				add_item_to_inventory(tile_item)
+				return
 
-func _handle_camera_zoom(event_key: InputEventKey):
+		game.game_ui.prompt_text("No item to grab.")
+
+				
+func _handle_camera_zoom(event_key: InputEventKey) -> void:
 	if event_key.is_action("zoom_plus"):
 		camera.zoom = clamp(camera.zoom + Vector2.ONE, Vector2.ONE, Vector2.ONE * max_camera_zoom)
 	elif event_key.is_action("zoom_minus"):
@@ -82,6 +98,15 @@ func _handle_movement(event_key: InputEventKey):
 			grid_position += move
 			update_fov.call_deferred()
 			pass_turns(turns_to_move)
+
+			for tile in game.get_current_layer().get_tiles(grid_position):
+				var tile_item: Item = tile as Item
+
+				if tile_item:
+					game.game_ui.prompt_text(
+						"[color=#fae7ac]%s[/color] (grab: g)" % tile_item.tile_name
+					)
+
 		else:
 			for tile in game.get_current_layer().get_tiles(grid_position + move):
 				var enemy: Enemy = tile as Enemy
@@ -154,6 +179,17 @@ func set_max_mana(new_max_mana: int) -> void:
 	max_mana = new_max_mana
 	game.game_ui.mana_progress_bar.max_value = max_mana
 	game.game_ui.mana_label.text = "%d/%d" % [mana, max_mana]
+
+
+func add_item_to_inventory(item: Item) -> void:
+	game.get_current_layer().erase_item(item.grid_position)
+	item.visible = false
+	item.id = global_inventory_id
+	global_inventory_id += 1
+
+	var item_frame: ItemFrame = item_frame_scene.instantiate()
+	item_frame.item = item
+	game.game_ui.add_item_frame(item_frame)
 
 
 func get_as_dict(_return_grid_position: bool = false) -> Dictionary:

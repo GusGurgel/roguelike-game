@@ -12,6 +12,10 @@ var tile_scene = preload("res://scenes/tile.tscn")
 var entity_scene = preload("res://scenes/entities/entity.tscn")
 var enemy_scene = preload("res://scenes/entities/enemy.tscn")
 
+# Items scenes
+var item_scene = preload("res://scenes/itens/item.tscn")
+var item_healing_potion_scene = preload("res://scenes/itens/healing_potion.tscn")
+
 
 var colored_texture: CompressedTexture2D = preload("res://images/tileset_colored.png")
 var monochrome_texture: CompressedTexture2D = preload("res://images/tileset_monochrome.png")
@@ -130,6 +134,9 @@ func parse_layer(layer_key: String, layers_data: Dictionary) -> Layer:
 	
 	if layer_data.has("entities"):
 		layer.entities = parse_layer_entities(layer_data["entities"], layer)
+	
+	if layer_data.has("itens"):
+		layer.itens = parse_layer_itens(layer_data["itens"])
 
 	return layer
 
@@ -157,7 +164,7 @@ func parse_layer_entities(entities_data: Dictionary, layer: Layer) -> Dictionary
 		var entity_data: Dictionary = entities_data[entity_key]
 		var node: Node = null
 
-		if entity_data.has("type") and str(entity_data["type"]).to_lower() == "enemy":
+		if Utils.dict_has_and_is_equal_lower_string(entity_data, "type", "enemy"):
 			node = enemy_scene.instantiate()
 			var node_enemy = node as Enemy
 
@@ -183,6 +190,55 @@ func parse_layer_entities(entities_data: Dictionary, layer: Layer) -> Dictionary
 
 	return entities
 
+
+func parse_layer_itens(itens_data: Dictionary) -> Dictionary[String, Item]:
+	var itens: Dictionary[String, Item] = {}
+
+	for item_key in itens_data:
+		var item_data = itens_data[item_key]
+		var node: Node = null
+
+		if Utils.dict_has_and_is_equal_lower_string(item_data, "type", "healing_potion"):
+			node = item_healing_potion_scene.instantiate()
+
+			Utils.copy_from_dict_if_exists(
+				node,
+				item_data,
+				[
+					"health_increase"
+				]
+			)
+		else:
+			node = item_scene.instantiate()
+		
+		var node_item = node as Item
+
+		if node_item:
+			var grid_position: Vector2i = parse_tile_grid_position(item_key)
+			if not item_data.has("tile"):
+				warning_messages.push_back("Item without a tile information.")
+				continue
+			item_data["tile"]["grid_position"] = {
+				x = grid_position.x,
+				y = grid_position.y
+			}
+			parse_item(item_data, node_item)
+			itens[item_key] = node_item
+
+	return itens
+
+func parse_item(item_data: Dictionary, item: Item) -> void:
+	parse_tile(item_data["tile"], item as Tile)
+
+	Utils.copy_from_dict_if_exists(
+		item,
+		item_data,
+		[
+			"usable",
+			"equippable",
+			"equipped"
+		]
+	)
 
 ## Change tile object to the parsed data.
 func parse_tile(tile_data: Dictionary, tile: Tile) -> void:
@@ -216,7 +272,12 @@ func parse_tile(tile_data: Dictionary, tile: Tile) -> void:
 	Utils.copy_from_dict_if_exists(
 		tile,
 		tile_data,
-		["is_transparent", "has_collision", "is_explored"]
+		[
+			"is_transparent",
+			"has_collision",
+			"is_explored",
+			"tile_name"
+		]
 	)
 
 

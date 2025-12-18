@@ -6,7 +6,7 @@ var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 func _ready():
 	rng.randomize()
 
-## Checks if a dictionary has all keys
+## Checks if a dictionary has all keys.
 func dictionary_has_all(dict: Dictionary, keys: Array[String]) -> bool:
 	for key in keys:
 		if not dict.has(key):
@@ -15,7 +15,7 @@ func dictionary_has_all(dict: Dictionary, keys: Array[String]) -> bool:
 	return true
 
 
-## Return true if any element of array has propriety == value. Else, returns false
+## Return true if any element of array has propriety == value. Else, returns false.
 func any_of_array_has_propriety_with_value(array: Array, propriety: String, value: Variant) -> bool:
 	for element in array:
 		if element and element.get(propriety) == value:
@@ -43,12 +43,12 @@ func copy_from_dict_if_exists(
 			print_warning("Tried to copy property '%s' to node '%s', but dictionary is missing it." % [key, node.name])
 
 
-## Converts integer grid position to a global position
+## Converts integer grid position to a global position.
 func grid_position_to_global_position(grid_position: Vector2i) -> Vector2:
 	return grid_position * Globals.tile_size
 
 
-## Converts float global position to a integer grid_position
+## Converts float global position to a integer grid_position.
 func global_position_to_grid_position(global_position: Vector2) -> Vector2i:
 	return Vector2(
 		global_position.x / Globals.tile_size.x,
@@ -56,23 +56,12 @@ func global_position_to_grid_position(global_position: Vector2) -> Vector2i:
 	)
 
 
-## Print a rich warning message
+## Print a rich warning message on the terminal.
 func print_warning(message: String):
 	print_rich("[color=#ffff00]⚠ Warning: %s[/color]" % message)
 
 
-## Return if a index is a border of a Rect2i
-##
-## [codeblock]
-## is_border(Rect2i(0, 0, 10, 10), Vector2i(0, 0)) # true
-## is_border(Rect2i(0, 0, 10, 10), Vector2i(1, 0)) # true
-## is_border(Rect2i(1, 1, 10, 10), Vector2i(9, 9)) # true
-## is_border(Rect2i(1, 1, 10, 10), Vector2i(1, 1)) # true
-##
-## is_border(Rect2i(0, 0, 10, 10), Vector2i(1, 1)) # false
-## is_border(Rect2i(1, 1, 10, 10), Vector2i(2, 2)) # false
-## is_border(Rect2i(1, 1, 10, 10), Vector2i(8, 8)) # false
-## [/codeblock]
+## Return if a index is a border of a Rect2i.
 func is_border(rect: Rect2i, pos: Vector2i) -> bool:
 	return (
 		pos.x == rect.position.x
@@ -81,11 +70,16 @@ func is_border(rect: Rect2i, pos: Vector2i) -> bool:
 		|| pos.y == rect.position.y + rect.size.y - 1
 	)
 
-## Return a random Vector2i direction
+## Return a random Vector2i direction.
 func get_random_direction() -> Vector2i:
 	return Vector2i(rng.randi_range(-1, 1), rng.randi_range(-1, 1))
 
 
-## Serialize a Vector2i
+## Serialize a Vector2i.
 func vector2i_to_string(pos: Vector2i) -> String:
 	return "%s,%s" % [pos.x, pos.y]
+
+
+## Tests if dict.has(key) and str(dict[key]).to_lower == value
+func dict_has_and_is_equal_lower_string(dict: Dictionary, key: String, value: String) -> bool:
+	return dict.has(key) and str(dict[key]).to_lower() == value
