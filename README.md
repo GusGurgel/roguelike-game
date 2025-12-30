@@ -16,3 +16,11 @@
 ### Formatting
 
 - 2 spaces between functions.
+
+### Objetives
+
+1. Create serialization system using Node heritage.
+2. Create spell system.
+   - Press space with a spell equipped to tagger the closest enemy.
+3. Create leader system to go up or down on the dungeon.
+4. Create the map generator based on the assets buddle.

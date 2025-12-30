@@ -1,4 +1,4 @@
-extends Sprite2D
+extends SerializableSprite2D
 class_name Tile
 
 signal tile_grid_position_change(old_pos: Vector2i, new_pos: Vector2i)
@@ -82,5 +82,79 @@ func get_as_dict(return_grid_position: bool = false) -> Dictionary:
 			x = self.grid_position.x,
 			y = self.grid_position.y
 		}
+
+	return result
+
+
+func load(dict: Dictionary) -> void:
+	# if dict.has("grid_position"):
+	# 	if Utils.dictionary_has_all(dict["grid_position"], ["x", "y"]):
+	# 		grid_position = Vector2i(dict["grid_position"]["x"], dict["grid_position"]["y"])
+	# 	else:
+	# 		Utils.print_warning("Grid position of a tile is missing x or y.")
+
+	# if dict.has("preset"):
+	# 	if data.get_tile_preset(dict["preset"]):
+	# 		tile.preset = dict["preset"]
+	# 		tile.copy_basic_proprieties(data.get_tile_preset(dict["preset"]))
+	# 	else:
+	# 		warning_messages.push_back("Preset '%s' not exists." % dict["preset"])
+
+	# if dict.has("texture"):
+	# 	tile.texture = data.get_texture(dict["texture"])
+
+	# if not tile.texture:
+	# 	warning_messages.push_back("Tile without a texture.")
+	# 	tile.texture = data.get_texture("default")
+
+	# if dict.has("color"):
+	# 	if not hex_color_regex.search(dict["color"]):
+	# 		warning_messages.push_back("Invalid color hex '%s' on tile." % dict["color"])
+	# 	if dict.has("texture"):
+	# 		tile.texture = data.get_texture_monochrome(dict["texture"])
+	# 	tile.modulate = Color(dict["color"])
+
+	Utils.copy_from_dict_if_exists(
+		self,
+		dict,
+		[
+			"grid_position",
+			"modulate",
+			"texture",
+			"is_transparent",
+			"has_collision",
+			"is_explored",
+			"tile_name"
+		],
+		[
+			"grid_position",
+			"texture",
+			"tile_name"
+		]
+	)
+
+func serialize() -> Dictionary:
+	var result: Dictionary = super.serialize()
+
+	if preset != "":
+		result = {
+			preset = self.preset,
+			is_explored = self.is_explored
+		}
+	else:
+		result = {
+			texture = self.texture,
+			modulate = self.modulate,
+			has_collision = self.has_collision,
+			is_explored = self.is_explored,
+			is_in_view = self.is_in_view,
+			is_transparent = self.is_transparent
+
+		}
+	
+	result["grid_position"] = {
+		x = self.grid_position.x,
+		y = self.grid_position.y
+	}
 
 	return result

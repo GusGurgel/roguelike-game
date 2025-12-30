@@ -10,9 +10,9 @@ class_name Main
 var game_data: Dictionary
 
 func _ready() -> void:
-	# gamer_parser.load_from_path("res://data/mapv1.json", game_ui)
+	gamer_parser.load_from_path("res://data/game.json", game_ui)
 	# gamer_parser.load_from_path(
-	gamer_parser.load_from_dict(Globals.game_data, game_ui)
+	# gamer_parser.load_from_dict(Globals.game_data, game_ui)
 
 	if gamer_parser.has_erros():
 		for error_message in gamer_parser.error_messages:
