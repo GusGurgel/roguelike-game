@@ -123,7 +123,7 @@ func load(data: Dictionary) -> void:
 		texture = game.textures.get_texture(data["texture"])
 
 	if data.has("color"):
-		if not Utils.hex_color_regex.search(data["color"]):
+		if not Globals.hex_color_regex.search(data["color"]):
 			Utils.print_warning("Invalid color hex '%s' on tile." % data["color"])
 		if data.has("texture"):
 			texture = game.textures.get_texture_monochrome(data["texture"])

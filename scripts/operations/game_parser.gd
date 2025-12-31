@@ -22,9 +22,6 @@ var colored_texture: CompressedTexture2D = preload("res://images/tileset_colored
 var monochrome_texture: CompressedTexture2D = preload("res://images/tileset_monochrome.png")
 var json_loader: JSONLoader = JSONLoader.new()
 
-var tile_key_regex: RegEx = RegEx.create_from_string("^(-?\\d+),(-?\\d+)$")
-var hex_color_regex: RegEx = RegEx.create_from_string("^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$")
-
 func _init():
 	Globals.game = data
 
@@ -68,16 +65,12 @@ func load_from_dict(dict: Dictionary, game_ui: GameUI) -> void:
 	# Load layers.
 	data.layers = parse_layers(data.raw_data)
 
-	# Load current_layer
-	data.current_layer = parse_current_layer(data.raw_data)
 
-
-	# Direct copies from the raw data
 	Utils.copy_from_dict_if_exists(
 		data,
 		data.raw_data,
-		["turn"],
-		["turn"]
+		["current_layer", "turn"],
+		["current_layer", "turn"]
 	)
 
 
@@ -97,11 +90,8 @@ func parse_layers(raw_data: Dictionary) -> Dictionary[String, Layer]:
 func parse_layer(layer_key: String, layers_data: Dictionary) -> Layer:
 	var layer: Layer = layer_scene.instantiate()
 	var layer_data = layers_data[layer_key]
+	layer.load(layer_data)
 
-
-	if layer_data.has("tiles"):
-		layer.tiles = parse_layer_tiles(layer_data["tiles"])
-	
 	if layer_data.has("entities"):
 		layer.entities = parse_layer_entities(layer_data["entities"], layer)
 	
@@ -109,22 +99,6 @@ func parse_layer(layer_key: String, layers_data: Dictionary) -> Layer:
 		layer.itens = parse_layer_itens(layer_data["itens"])
 
 	return layer
-
-
-func parse_layer_tiles(tiles_data: Dictionary) -> Dictionary[String, Tile]:
-	var tiles: Dictionary[String, Tile] = {}
-
-	for tile_key in tiles_data:
-		var tile: Tile = tile_scene.instantiate()
-		var grid_position: Vector2i = parse_tile_grid_position(tile_key)
-		tiles_data[tile_key]["grid_position"] = {
-			x = grid_position.x,
-			y = grid_position.y
-		}
-		tile.load(tiles_data[tile_key])
-		tiles[tile_key] = tile
-
-	return tiles
 
 
 func parse_layer_entities(entities_data: Dictionary, layer: Layer) -> Dictionary[String, Entity]:
@@ -227,7 +201,7 @@ func parse_tile_grid_position(tile_key: String) -> Vector2i:
 	if tile_key == "":
 		return Vector2i.ZERO
 
-	var regex_result: RegExMatch = tile_key_regex.search(tile_key)
+	var regex_result: RegExMatch = Globals.vector2i_string_regex.search(tile_key)
 	var grid_position: Vector2i
 
 	if not regex_result:
@@ -237,15 +211,3 @@ func parse_tile_grid_position(tile_key: String) -> Vector2i:
 	grid_position.x = regex_result.strings[1].to_int()
 	grid_position.y = regex_result.strings[2].to_int()
 	return grid_position
-
-
-func parse_current_layer(raw_data: Dictionary):
-	if not raw_data.has("current_layer"):
-		warning_messages.push_back("Game without a current_layer.")
-		return "default"
-	
-	if not raw_data["layers"].has(raw_data["current_layer"]):
-		warning_messages.push_back("current_layer '%s' doesn't exist" % raw_data["current_layer"])
-		return "default"
-
-	return raw_data["current_layer"]

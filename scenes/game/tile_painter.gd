@@ -41,7 +41,7 @@ func set_rect_random(
 			## Routine of erase rectangle
 			if len(border_tiles) == 1 and border_tiles[0] == "" \
 			and len(fill_tiles) == 1 and fill_tiles[0] == "":
-				game.erase_tile(Vector2i(x, y))
+				game.get_current_layer().tiles.erase_tile(Vector2i(x, y))
 				continue
 
 
@@ -173,7 +173,7 @@ func set_line_without_borders(
 					if tile_key != "":
 						game.set_tile_by_preset(tile_key, tile_pos, set_tile_mode)
 					else:
-						game.erase_tile(tile_pos)
+						game.get_current_layer().tiles.erase_tile(tile_pos)
 
 
 # ## Draw a filled polygon from a list of points.

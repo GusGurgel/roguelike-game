@@ -94,30 +94,25 @@ func set_tile_by_preset(
 	tile.preset_name = preset
 	tile.copy_basic_proprieties(tiles_presets.get_tile_preset(preset))
 	tile.grid_position = pos
-	layers[current_layer].set_tile(tile)
+	get_current_layer().tiles.set_tile(tile)
 
 
 ## Return tiles from current layer on pos
 func get_tiles(pos: Vector2i) -> Array[Tile]:
-	return layers[current_layer].get_tiles(pos)
-
-
-## Erase tile from the current layer. Return true if a tile was removed
-func erase_tile(pos: Vector2i) -> bool:
-	return layers[current_layer].erase_tile(pos)
+	return get_current_layer().get_tiles(pos)
 
 
 func get_current_layer() -> Layer:
 	return layers[current_layer]
 
 	
-func get_as_dict() -> Dictionary:
-	var result: Dictionary = self.raw_data
+# func get_as_dict() -> Dictionary:
+# 	var result: Dictionary = self.raw_data
 
-	## Get current layer tiles
-	for layer_key in self.raw_data["layers"]:
-		result["layers"][layer_key]["tiles"] = self.layers[layer_key].get_tiles_as_dict()
+# 	## Get current layer tiles
+# 	for layer_key in self.raw_data["layers"]:
+# 		result["layers"][layer_key]["tiles"] = self.layers[layer_key].get_tiles_as_dict()
 	
-	result["player"] = player.get_as_dict()
+# 	result["player"] = player.get_as_dict()
 
-	return result
+# 	return result

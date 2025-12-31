@@ -10,6 +10,8 @@ class_name Main
 var game_data: Dictionary
 
 func _ready() -> void:
+	var astar_grid: AStarGrid2D = AStarGrid2D.new()
+	
 	gamer_parser.load_from_path("res://data/game.json", game_ui)
 	# gamer_parser.load_from_path(
 	# gamer_parser.load_from_dict(Globals.game_data, game_ui)

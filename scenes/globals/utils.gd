@@ -8,10 +8,6 @@ extends Node
 
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 
-var tile_key_regex: RegEx = RegEx.create_from_string("^(-?\\d+),(-?\\d+)$")
-var hex_color_regex: RegEx = RegEx.create_from_string("^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$")
-
-
 
 ################################################################################
 # Godot
@@ -79,6 +75,22 @@ func get_random_direction() -> Vector2i:
 ## Serialize a Vector2i.
 func vector2i_to_string(pos: Vector2i) -> String:
 	return "%s,%s" % [pos.x, pos.y]
+
+
+func string_to_vector2i(pos: String) -> Vector2i:
+	if pos == "":
+		return Vector2i.ZERO
+
+	var regex_result: RegExMatch = Globals.vector2i_string_regex.search(pos)
+	var grid_position: Vector2i = Vector2i.ZERO
+
+	if not regex_result:
+		Globals.print_warning("Invalid tilemap tile_key '%s'" % pos)
+		return grid_position
+
+	grid_position.x = regex_result.strings[1].to_int()
+	grid_position.y = regex_result.strings[2].to_int()
+	return grid_position
 
 
 ################################################################################
