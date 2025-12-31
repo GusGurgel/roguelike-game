@@ -3,7 +3,7 @@ class_name Layer
 ## Represents a Game layer, contais the tiles and entities.
 
 var tiles: TileList
-var entities: Dictionary[String, Entity]
+var entities: EntityList
 var itens: Dictionary[String, Item]
 
 var astar_grid: AStarGrid2D = AStarGrid2D.new()
@@ -24,13 +24,6 @@ var bottom_right: Vector2i:
 
 
 func _ready() -> void:
-	# Add entities.
-	for entity: Entity in entities.values():
-		if entity.get_parent():
-			entity.reparent(entities_child)
-		else:
-			entities_child.add_child(entity)
-	
 	# Add items.
 	for item: Item in itens.values():
 		if item.get_parent():
@@ -46,7 +39,7 @@ func get_tiles(pos: Vector2i) -> Array[Tile]:
 	var string_pos: String = Utils.vector2i_to_string(pos)
 
 	var tile: Variant = tiles.get_tile(pos)
-	var entity: Variant = entities.get(string_pos)
+	var entity: Variant = entities.get_entity(pos)
 	var item: Variant = itens.get(string_pos)
 
 
@@ -135,11 +128,17 @@ func load(data: Dictionary) -> void:
 	super.load(data)
 
 	astar_grid.update()
+
 	tiles = TileList.new(astar_grid)
 	tiles.load(data["tiles"])
 	tiles.name = "Tiles"
 	add_child(tiles)
 	move_child(tiles, 0)
+
+	entities = EntityList.new(astar_grid)
+	entities.load(data["entities"])
+	add_child(entities)
+	move_child(entities, 1)
 	
 
 func serialize() -> Dictionary:

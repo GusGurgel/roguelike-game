@@ -6,7 +6,6 @@ var data: Game = preload("res://scenes/game/game.tscn").instantiate()
 
 var player_scene = preload("res://scenes/entities/player.tscn")
 var layer_scene = preload("res://scenes/layer.tscn")
-var tile_scene = preload("res://scenes/tile.tscn")
 
 # Entities scenes
 var entity_scene = preload("res://scenes/entities/entity.tscn")
@@ -92,8 +91,8 @@ func parse_layer(layer_key: String, layers_data: Dictionary) -> Layer:
 	var layer_data = layers_data[layer_key]
 	layer.load(layer_data)
 
-	if layer_data.has("entities"):
-		layer.entities = parse_layer_entities(layer_data["entities"], layer)
+	# if layer_data.has("entities"):
+	# 	layer.entities = parse_layer_entities(layer_data["entities"], layer)
 	
 	if layer_data.has("itens"):
 		layer.itens = parse_layer_itens(layer_data["itens"])

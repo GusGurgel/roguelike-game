@@ -47,7 +47,7 @@ func load(data: Dictionary) -> void:
 	super.load(data)
 	
 	for tile_key in data:
-		var tile: Tile = Globals.scenes["tile"].instantiate()
+		var tile: Tile = Tile.new()
 		var tile_data: Dictionary = data[tile_key]
 		var grid_position: Vector2i = Utils.string_to_vector2i(tile_key)
 		tile_data["grid_position"] = {

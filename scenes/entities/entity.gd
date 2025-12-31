@@ -91,14 +91,15 @@ func kill() -> void:
 
 ## Move the entity avoiding
 func move_to(pos: Vector2i) -> void:
-	var grid_position_string: String = Utils.vector2i_to_string(self.grid_position)
-	var pos_string: String = Utils.vector2i_to_string(pos)
+	pass
+	# var grid_position_string: String = Utils.vector2i_to_string(self.grid_position)
+	# var pos_string: String = Utils.vector2i_to_string(pos)
 
-	if layer.can_move_to_position(pos) \
-	and layer.entities.get(pos_string) == null:
-		layer.entities.erase(grid_position_string)
-		layer.entities.set(pos_string, self)
-		self.grid_position = pos
+	# if layer.can_move_to_position(pos) \
+	# and layer.entities.get(pos_string) == null:
+	# 	layer.entities.erase(grid_position_string)
+	# 	layer.entities.set(pos_string, self)
+	# 	self.grid_position = pos
 
 func load(data: Dictionary) -> void:
 	super.load(data)

@@ -23,7 +23,6 @@ var colored_texture: CompressedTexture2D = preload("res://images/tileset_colored
 var monochrome_texture: CompressedTexture2D = preload("res://images/tileset_monochrome.png")
 
 var scenes: Dictionary[String, PackedScene] = {
-	"tile" = preload("res://scenes/tile.tscn")
 }
 
 ################################################################################
