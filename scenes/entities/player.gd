@@ -200,3 +200,21 @@ func get_as_dict(_return_grid_position: bool = false) -> Dictionary:
 	return {
 		entity = super.get_as_dict(true),
 	}
+
+
+func load(data: Dictionary) -> void:
+	super.load(data)
+
+	Utils.copy_from_dict_if_exists(
+		self,
+		data,
+		["heal_per_turns"],
+		["heal_per_turns"]
+	)
+
+	self.is_in_view = true
+	self.is_explored = true
+
+func serialize() -> Dictionary:
+	var result: Dictionary = super.serialize()
+	return result

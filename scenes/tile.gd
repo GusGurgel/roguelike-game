@@ -37,8 +37,8 @@ var is_in_view: bool = false:
 var is_transparent = false
 var has_collision = false
 
-## Tile used as a base.
-var preset: String = ""
+var preset_name: String = ""
+var texture_name: String = ""
 
 var tile_name: String = ""
 
@@ -62,9 +62,9 @@ func copy_basic_proprieties(tile: Tile) -> void:
 func get_as_dict(return_grid_position: bool = false) -> Dictionary:
 	var result: Dictionary = {}
 
-	if preset != "":
+	if preset_name != "":
 		result = {
-			preset = self.preset,
+			preset_name = self.preset_name,
 			is_explored = self.is_explored
 		}
 	else:
@@ -86,59 +86,68 @@ func get_as_dict(return_grid_position: bool = false) -> Dictionary:
 	return result
 
 
-func load(dict: Dictionary) -> void:
-	# if dict.has("grid_position"):
-	# 	if Utils.dictionary_has_all(dict["grid_position"], ["x", "y"]):
-	# 		grid_position = Vector2i(dict["grid_position"]["x"], dict["grid_position"]["y"])
-	# 	else:
-	# 		Utils.print_warning("Grid position of a tile is missing x or y.")
+func load(data: Dictionary) -> void:
+	super.load(data)
 
-	# if dict.has("preset"):
-	# 	if data.get_tile_preset(dict["preset"]):
-	# 		tile.preset = dict["preset"]
-	# 		tile.copy_basic_proprieties(data.get_tile_preset(dict["preset"]))
-	# 	else:
-	# 		warning_messages.push_back("Preset '%s' not exists." % dict["preset"])
+	var game: Game = Globals.get_game()
+	var warnings: PackedStringArray = []
 
-	# if dict.has("texture"):
-	# 	tile.texture = data.get_texture(dict["texture"])
+	if not game:
+		return
 
-	# if not tile.texture:
-	# 	warning_messages.push_back("Tile without a texture.")
-	# 	tile.texture = data.get_texture("default")
+	if data.has("grid_position"):
+		if Utils.dictionary_has_all(data["grid_position"], ["x", "y"]):
+			grid_position = Vector2i(data["grid_position"]["x"], data["grid_position"]["y"])
+		else:
+			grid_position = Vector2i.ZERO
+			Utils.print_warning("Grid position of a tile is missing x or y.")
 
-	# if dict.has("color"):
-	# 	if not hex_color_regex.search(dict["color"]):
-	# 		warning_messages.push_back("Invalid color hex '%s' on tile." % dict["color"])
-	# 	if dict.has("texture"):
-	# 		tile.texture = data.get_texture_monochrome(dict["texture"])
-	# 	tile.modulate = Color(dict["color"])
+	if data.has("preset_name"):
+		var tile_preset: Tile = game.tiles_presets.get_tile_preset(data["preset_name"])
+		if tile_preset != null:
+			texture = tile_preset.texture
+			has_collision = tile_preset.has_collision
+			is_transparent = tile_preset.is_transparent
+			modulate = tile_preset.modulate
+			tile_name = tile_preset.tile_name
+		else:
+			Utils.print_warning("Preset '%s' not exists." % data["preset_name"])
+			data.erase("preset_name")
+	
+	# All textures that do not have a preset name need to have this properties
+	# explicitly defined.
+	if not data.has("preset_name"):
+		warnings = ["grid_position", "texture", "tile_name"]
 
+	if data.has("texture"):
+		texture = game.textures.get_texture(data["texture"])
+
+	if data.has("color"):
+		if not Utils.hex_color_regex.search(data["color"]):
+			Utils.print_warning("Invalid color hex '%s' on tile." % data["color"])
+		if data.has("texture"):
+			texture = game.textures.get_texture_monochrome(data["texture"])
+		modulate = Color(data["color"])
+	
 	Utils.copy_from_dict_if_exists(
 		self,
-		dict,
+		data,
 		[
-			"grid_position",
-			"modulate",
-			"texture",
+			"preset_name",
 			"is_transparent",
 			"has_collision",
 			"is_explored",
 			"tile_name"
 		],
-		[
-			"grid_position",
-			"texture",
-			"tile_name"
-		]
+		warnings
 	)
 
 func serialize() -> Dictionary:
 	var result: Dictionary = super.serialize()
 
-	if preset != "":
+	if preset_name != "":
 		result = {
-			preset = self.preset,
+			preset_name = self.preset_name,
 			is_explored = self.is_explored
 		}
 	else:

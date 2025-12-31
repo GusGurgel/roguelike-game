@@ -1,10 +1,29 @@
 extends Node
 ## Utils functions
 
+
+################################################################################
+# Consts
+################################################################################
+
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
+
+var tile_key_regex: RegEx = RegEx.create_from_string("^(-?\\d+),(-?\\d+)$")
+var hex_color_regex: RegEx = RegEx.create_from_string("^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$")
+
+
+
+################################################################################
+# Godot
+################################################################################
 
 func _ready():
 	rng.randomize()
+
+################################################################################
+# Functions
+################################################################################
+
 
 ## Checks if a dictionary has all keys.
 func dictionary_has_all(dict: Dictionary, keys: Array[String]) -> bool:
@@ -22,25 +41,6 @@ func any_of_array_has_propriety_with_value(array: Array, propriety: String, valu
 			return true
 	
 	return false
-
-
-## Updates an node using values from a dictionary, based on a list of properties.
-## If the property exists in the dictionary and is in properties, it is copied.
-## If it doesn't exist and is in warning, a warning is logged.
-func copy_from_dict_if_exists(
-		node: Node,
-		dictionary: Dictionary,
-		properties: Array[String] = [],
-		warning: Array[String] = []
-) -> void:
-	for key in properties:
-		if dictionary.has(key):
-			if node.get(key) != null:
-				node.set(key, dictionary.get(key))
-			else:
-				print_warning("Object %s does not have property '%s'." % [node, key])
-		elif warning.has(key):
-			print_warning("Tried to copy property '%s' to node '%s', but dictionary is missing it." % [key, node.name])
 
 
 ## Converts integer grid position to a global position.
@@ -70,6 +70,7 @@ func is_border(rect: Rect2i, pos: Vector2i) -> bool:
 		|| pos.y == rect.position.y + rect.size.y - 1
 	)
 
+
 ## Return a random Vector2i direction.
 func get_random_direction() -> Vector2i:
 	return Vector2i(rng.randi_range(-1, 1), rng.randi_range(-1, 1))
@@ -80,6 +81,29 @@ func vector2i_to_string(pos: Vector2i) -> String:
 	return "%s,%s" % [pos.x, pos.y]
 
 
+################################################################################
+# Dictionary Functions
+################################################################################
+
 ## Tests if dict.has(key) and str(dict[key]).to_lower == value
 func dict_has_and_is_equal_lower_string(dict: Dictionary, key: String, value: String) -> bool:
 	return dict.has(key) and str(dict[key]).to_lower() == value
+
+
+## Updates an node using values from a dictionary, based on a list of properties.
+## If the property exists in the dictionary and is in properties, it is copied.
+## If it doesn't exist and is in warning, a warning is logged.
+func copy_from_dict_if_exists(
+		node: Node,
+		dictionary: Dictionary,
+		properties: PackedStringArray = [],
+		warning: PackedStringArray = []
+) -> void:
+	for key in properties:
+		if dictionary.has(key):
+			if node.get(key) != null:
+				node.set(key, dictionary.get(key))
+			else:
+				print_warning("Object %s does not have property '%s'." % [node, key])
+		elif warning.has(key):
+			print_warning("Tried to copy property '%s' to node '%s', but dictionary is missing it." % [key, node.name])

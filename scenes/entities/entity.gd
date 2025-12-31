@@ -99,3 +99,25 @@ func move_to(pos: Vector2i) -> void:
 		layer.entities.erase(grid_position_string)
 		layer.entities.set(pos_string, self)
 		self.grid_position = pos
+
+func load(data: Dictionary) -> void:
+	super.load(data)
+	Utils.copy_from_dict_if_exists(
+		self,
+		data,
+		[
+			"entity_name",
+			"max_health",
+			"health",
+			"max_mana",
+			"mana",
+			"base_damage",
+			"turns_to_move"
+		]
+	)
+
+	is_transparent = true
+
+func serialize() -> Dictionary:
+	var result: Dictionary = super.serialize()
+	return result

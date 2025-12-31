@@ -19,6 +19,18 @@ enum SetTileMode {
 	OVERRIDE_ONLY_WITH_NOT_COLLISION
 }
 
+var colored_texture: CompressedTexture2D = preload("res://images/tileset_colored.png")
+var monochrome_texture: CompressedTexture2D = preload("res://images/tileset_monochrome.png")
+
+var scenes: Dictionary[String, PackedScene] = {
+	"tile" = preload("res://scenes/tile.tscn")
+}
+
 var game: Game = null
 
 var game_data: Dictionary = {}
+
+func get_game() -> Game:
+	if game == null:
+		Utils.print_warning("Game is not ready!")
+	return game

@@ -1,5 +1,5 @@
-extends Sprite2D
-class_name SerializableSprite2D
+extends Resource
+class_name SerializableResource
 
 ## Load object property from `dict` parameter. 
 func load(data: Dictionary) -> void:

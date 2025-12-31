@@ -12,9 +12,9 @@ var tile_scene = preload("res://scenes/tile.tscn")
 var raw_data: Dictionary
 var player: Player
 ## Dictionary of game textures.
-var textures: Dictionary[String, AtlasTexture]
+var textures: TextureList
 ## Dictionary of presets of tiles
-var tiles_presets: Dictionary[String, Tile]
+var tiles_presets: TilePresetList
 
 var turn: int = 0:
 	set(new_turn):
@@ -77,9 +77,6 @@ func set_tile_by_preset(
 		return
 
 	var tile: Tile
-	if get_tile_preset(preset) == null:
-		Utils.print_warning("Tile preset '%s' not exists." % preset)
-		preset = "default"
 
 	if set_tile_mode == Globals.SetTileMode.OVERRIDE_ONLY_WITH_COLLISION:
 		var current_tiles: Array[Tile] = get_tiles(pos)
@@ -94,8 +91,8 @@ func set_tile_by_preset(
 			return
 	
 	tile = tile_scene.instantiate()
-	tile.preset = preset
-	tile.copy_basic_proprieties(get_tile_preset(preset))
+	tile.preset_name = preset
+	tile.copy_basic_proprieties(tiles_presets.get_tile_preset(preset))
 	tile.grid_position = pos
 	layers[current_layer].set_tile(tile)
 
@@ -108,29 +105,6 @@ func get_tiles(pos: Vector2i) -> Array[Tile]:
 ## Erase tile from the current layer. Return true if a tile was removed
 func erase_tile(pos: Vector2i) -> bool:
 	return layers[current_layer].erase_tile(pos)
-
-
-## Return texture if exists, else returns "default" texture.
-func get_texture(id_texture: String) -> AtlasTexture:
-	if textures.has(id_texture):
-		return textures[id_texture]
-	else:
-		return textures["default"]
-
-
-## Return monochrome version of texture if existe, else returns "default 
-## monochrome" texture
-func get_texture_monochrome(id_texture: String) -> AtlasTexture:
-	id_texture = "monochrome_%s" % id_texture
-	if textures.has(id_texture):
-		return textures[id_texture]
-	else:
-		return textures["monochrome_default"]
-
-
-## Return tile preset, or null if not exists
-func get_tile_preset(id_tile_preset) -> Tile:
-	return tiles_presets.get(id_tile_preset)
 
 
 func get_current_layer() -> Layer:

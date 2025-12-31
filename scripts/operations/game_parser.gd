@@ -25,6 +25,9 @@ var json_loader: JSONLoader = JSONLoader.new()
 var tile_key_regex: RegEx = RegEx.create_from_string("^(-?\\d+),(-?\\d+)$")
 var hex_color_regex: RegEx = RegEx.create_from_string("^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$")
 
+func _init():
+	Globals.game = data
+
 
 func load_from_path(path: String, game_ui: GameUI) -> void:
 	# Load raw_data.
@@ -42,13 +45,25 @@ func load_from_dict(dict: Dictionary, game_ui: GameUI) -> void:
 	data.game_ui = game_ui
 	
 	# Load textures.
-	data.textures = parse_textures(data.raw_data)
+	data.textures = TextureList.new()
+	if not data.raw_data.has("textures"):
+		Utils.print_warning("Game without a texture list.")
+	else:
+		data.textures.load(data.raw_data["textures"])
 
 	# Load tiles_presets
-	data.tiles_presets = parse_tiles_presets(data.raw_data)
+	data.tiles_presets = TilePresetList.new()
+	if not data.raw_data.has("tiles_presets"):
+		Utils.print_warning("Game without a tile preset list.")
+	else:
+		data.tiles_presets.load(data.raw_data["tiles_presets"])
 
 	# Load player.
-	data.player = parse_player(data.raw_data)
+	data.player = player_scene.instantiate()
+	if not data.raw_data.has("player"):
+		Utils.print_warning("Game without a player.")
+	else:
+		data.player.load(data.raw_data["player"])
 
 	# Load layers.
 	data.layers = parse_layers(data.raw_data)
@@ -64,56 +79,6 @@ func load_from_dict(dict: Dictionary, game_ui: GameUI) -> void:
 		["turn"],
 		["turn"]
 	)
-
-
-## Parse all textures [br][br]
-##
-## Texture are load in two versions, monochrome and colored. To get de
-## monochrome version just use:
-## [codeblock]textures["monochrome_{texture name}"][/codeblock]
-func parse_textures(raw_data: Dictionary) -> Dictionary[String, AtlasTexture]:
-	var textures: Dictionary[String, AtlasTexture] = {}
-
-	# Add the default texture
-	var default_colored_texture: AtlasTexture = AtlasTexture.new()
-	var default_monochrome_texture: AtlasTexture = AtlasTexture.new()
-	default_colored_texture.atlas = colored_texture
-	default_monochrome_texture.atlas = monochrome_texture
-	default_colored_texture.region = Rect2(
-		Globals.default_texture.x * Globals.tile_size.x,
-		Globals.default_texture.y * Globals.tile_size.y,
-		Globals.tile_size.x,
-		Globals.tile_size.y
-	)
-	default_monochrome_texture.region = default_colored_texture.region
-	textures["default"] = default_colored_texture
-	textures["monochrome_default"] = default_monochrome_texture
-
-	for key in raw_data.textures:
-		var texture_data = raw_data.textures[key]
-
-		if not Utils.dictionary_has_all(texture_data, ["x", "y"]):
-			warning_messages.push_back("Texture '%s' without position." % key)
-			continue
-
-		## Add colored and monochrome versions
-		var texture_colored: AtlasTexture = AtlasTexture.new()
-		var texture_monochrome: AtlasTexture = AtlasTexture.new()
-
-		texture_colored.atlas = colored_texture
-		texture_monochrome.atlas = monochrome_texture
-		texture_colored.region = Rect2(
-			texture_data["x"] * Globals.tile_size.x,
-			texture_data["y"] * Globals.tile_size.y,
-			Globals.tile_size.x,
-			Globals.tile_size.y
-		)
-		texture_monochrome.region = texture_colored.region
-
-		textures[key] = texture_colored
-		textures["monochrome_%s" % key] = texture_monochrome
-
-	return textures
 
 
 func parse_layers(raw_data: Dictionary) -> Dictionary[String, Layer]:
@@ -156,7 +121,7 @@ func parse_layer_tiles(tiles_data: Dictionary) -> Dictionary[String, Tile]:
 			x = grid_position.x,
 			y = grid_position.y
 		}
-		parse_tile(tiles_data[tile_key], tile)
+		tile.load(tiles_data[tile_key])
 		tiles[tile_key] = tile
 
 	return tiles
@@ -182,14 +147,14 @@ func parse_layer_entities(entities_data: Dictionary, layer: Layer) -> Dictionary
 
 		if node_entity:
 			var grid_position: Vector2i = parse_tile_grid_position(entity_key)
-			if not entity_data.has("tile"):
-				warning_messages.push_back("Entity without a tile information.")
-				continue
-			entity_data["tile"]["grid_position"] = {
+			# if not entity_data.has("tile"):
+			# 	warning_messages.push_back("Entity without a tile information.")
+			# 	continue
+			entity_data["grid_position"] = {
 				x = grid_position.x,
 				y = grid_position.y
 			}
-			parse_entity(entity_data, node_entity)
+			node_entity.load(entity_data)
 			node_entity.layer = layer
 			entities[entity_key] = node_entity
 
@@ -244,7 +209,7 @@ func parse_layer_itens(itens_data: Dictionary) -> Dictionary[String, Item]:
 
 
 func parse_item(item_data: Dictionary, item: Item) -> void:
-	parse_tile(item_data["tile"], item as Tile)
+	item.load(item_data["tile"])
 
 	Utils.copy_from_dict_if_exists(
 		item,
@@ -254,47 +219,6 @@ func parse_item(item_data: Dictionary, item: Item) -> void:
 			"equippable",
 			"equipped",
 			"description"
-		]
-	)
-
-
-## Change tile object to the parsed data.
-func parse_tile(tile_data: Dictionary, tile: Tile) -> void:
-	if tile_data.has("grid_position"):
-		if Utils.dictionary_has_all(tile_data["grid_position"], ["x", "y"]):
-			tile.grid_position = Vector2i(tile_data["grid_position"]["x"], tile_data["grid_position"]["y"])
-		else:
-			warning_messages.push_back("Grid position of a tile is missing x or y.")
-
-	if tile_data.has("preset"):
-		if data.get_tile_preset(tile_data["preset"]):
-			tile.preset = tile_data["preset"]
-			tile.copy_basic_proprieties(data.get_tile_preset(tile_data["preset"]))
-		else:
-			warning_messages.push_back("Preset '%s' not exists." % tile_data["preset"])
-
-	if tile_data.has("texture"):
-		tile.texture = data.get_texture(tile_data["texture"])
-
-	if not tile.texture:
-		warning_messages.push_back("Tile without a texture.")
-		tile.texture = data.get_texture("default")
-
-	if tile_data.has("color"):
-		if not hex_color_regex.search(tile_data["color"]):
-			warning_messages.push_back("Invalid color hex '%s' on tile." % tile_data["color"])
-		if tile_data.has("texture"):
-			tile.texture = data.get_texture_monochrome(tile_data["texture"])
-		tile.modulate = Color(tile_data["color"])
-
-	Utils.copy_from_dict_if_exists(
-		tile,
-		tile_data,
-		[
-			"is_transparent",
-			"has_collision",
-			"is_explored",
-			"tile_name"
 		]
 	)
 
@@ -315,54 +239,6 @@ func parse_tile_grid_position(tile_key: String) -> Vector2i:
 	return grid_position
 
 
-func parse_player(raw_data: Dictionary) -> Player:
-	var player: Player = player_scene.instantiate()
-
-	if not raw_data.has("player"):
-		warning_messages.push_back("Game without a player.")
-		return player
-
-	var player_data = raw_data["player"]
-
-	if not player_data.has("entity"):
-		warning_messages.push_back("Player without a entity information")
-		return player
-	
-	parse_entity(player_data["entity"], player as Entity)
-	player.is_in_view = true
-
-	Utils.copy_from_dict_if_exists(
-		player,
-		player_data,
-		["heal_per_turns"],
-		["heal_per_turns"]
-	)
-
-	return player
-
-
-func parse_entity(entity_data: Dictionary, entity: Entity) -> void:
-	if not entity_data.has("tile"):
-		error_messages.push_back("Entity without a tile information.")
-		return
-	
-	parse_tile(entity_data["tile"], entity as Tile)
-
-	Utils.copy_from_dict_if_exists(
-		entity,
-		entity_data,
-		[
-			"entity_name",
-			"max_health",
-			"health",
-			"max_mana",
-			"mana",
-			"base_damage",
-			"turns_to_move"
-		]
-	)
-
-
 func parse_current_layer(raw_data: Dictionary):
 	if not raw_data.has("current_layer"):
 		warning_messages.push_back("Game without a current_layer.")
@@ -373,30 +249,3 @@ func parse_current_layer(raw_data: Dictionary):
 		return "default"
 
 	return raw_data["current_layer"]
-
-
-func parse_tiles_presets(raw_data: Dictionary) -> Dictionary[String, Tile]:
-	var tiles_presets: Dictionary[String, Tile]
-
-	## Add default tile
-	tiles_presets["default"] = tile_scene.instantiate()
-	tiles_presets["default"].texture = data.get_texture("default")
-
-	if raw_data.has("tiles_presets"):
-		for tile_preset_key in raw_data["tiles_presets"]:
-			var tile: Tile = tile_scene.instantiate()
-			var tile_preset_data: Dictionary = raw_data["tiles_presets"][tile_preset_key]
-			tile_preset_data["grid_position"] = {
-				x = 0,
-				y = 0
-			}
-			parse_tile(tile_preset_data, tile)
-			tiles_presets[tile_preset_key] = tile
-
-
-	return tiles_presets
-
-
-## Alters entity values to the parsed structure
-# func parse_entity(raw_data: Dictionary, entity: Entity) -> void:
-# 	entity.
