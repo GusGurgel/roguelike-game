@@ -35,14 +35,6 @@ func _ready() -> void:
 	game = load_game_from_path("res://data/game.json", game_ui)
 	game_viewport.add_child(game)
 
-	game.set_tile_by_preset("brick_floor", Vector2i(-10, -10))
-	game.layers.switch_layer("default")
-
-	get_tree().create_timer(5).timeout.connect(func() : 
-		game.layers.switch_layer("main")
-		game.player.update_fov()
-	)
-
 
 func _unhandled_input(event: InputEvent) -> void:
 	var event_key = event as InputEventKey
