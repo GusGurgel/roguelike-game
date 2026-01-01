@@ -13,10 +13,7 @@ func load_game_from_path(path: String, _game_ui: GameUI) -> Variant:
 
 	json_loader.load_from_path(path)
 	if json_loader.has_erros():
-		for error_message in json_loader.error_messages:
-			printerr(error_message)
-		for warning_messages in json_loader.warning_messages:
-			Utils.print_warning(warning_messages)
+		json_loader.print_erros_and_warnings()
 		return null
 	else:
 		return load_game_from_dict(json_loader.data, _game_ui)
@@ -37,6 +34,14 @@ func load_game_from_dict(dict: Dictionary, _game_ui: GameUI) -> Game:
 func _ready() -> void:
 	game = load_game_from_path("res://data/game.json", game_ui)
 	game_viewport.add_child(game)
+
+	game.set_tile_by_preset("brick_floor", Vector2i(-10, -10))
+	game.layers.switch_layer("default")
+
+	get_tree().create_timer(5).timeout.connect(func() : 
+		game.layers.switch_layer("main")
+		game.player.update_fov()
+	)
 
 
 func _unhandled_input(event: InputEvent) -> void:

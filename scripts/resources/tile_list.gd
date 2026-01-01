@@ -27,7 +27,9 @@ func set_tile(tile: Tile) -> void:
 		add_child(tile)
 
 	## Update Top Left and Top Right.
-	astar_grid.region = astar_grid.region.expand(tile.grid_position + Vector2i.ONE)
+	var x = tile.grid_position.x + 1 if tile.grid_position.x >= 0 else tile.grid_position.x - 1
+	var y = tile.grid_position.y + 1 if tile.grid_position.x >= 0 else tile.grid_position.y - 1
+	astar_grid.region = astar_grid.region.expand(Vector2i(x, y))
 	astar_grid.update()
 	astar_grid.set_point_solid(tile.grid_position, tile.has_collision)
 

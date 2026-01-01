@@ -59,6 +59,7 @@ func _ready() -> void:
 	game_ui.debug_ui.player = player
 	player.tile_grid_position_change.connect(game_ui.debug_ui._on_player_change_grid_position)
 	player.grid_position = player.grid_position
+	player.name = "Player"
 
 
 ## Set a tile by a preset. [br]
@@ -101,7 +102,7 @@ func get_tiles(pos: Vector2i) -> Array[Tile]:
 func load(data: Dictionary) -> void:
 	raw_data = data
 
-	for value in [["textures", textures], ["tiles_presets", tiles_presets], ["layers", layers], ["player", player]]:
+	for value in [["textures", textures], ["tiles_presets", tiles_presets], ["layer_list", layers], ["player", player]]:
 		var key = value[0]
 		var object = value[1]
 
@@ -109,14 +110,6 @@ func load(data: Dictionary) -> void:
 			object.load(data[key])
 		else:
 			Utils.print_warning("Game data is missing a %s information." % key)
-
-
-	# Load player.
-	# player = load("res://scenes/entities/player.tscn").instantiate()
-	# if not data.has("player"):
-	# 	Utils.print_warning("Game without a player.")
-	# else:
-		# player.load(data["player"])
 
 
 	Utils.copy_from_dict_if_exists(

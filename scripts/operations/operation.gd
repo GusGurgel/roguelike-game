@@ -11,3 +11,9 @@ var warning_messages: PackedStringArray = []
 
 func has_erros() -> bool:
 	return len(error_messages) != 0
+
+func print_erros_and_warnings() -> void:
+	for error_message in error_messages:
+		printerr(error_message)
+	for warning_message in warning_messages:
+		Utils.print_warning(warning_message)

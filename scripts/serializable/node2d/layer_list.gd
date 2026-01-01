@@ -30,18 +30,20 @@ func load(data: Dictionary) -> void:
 
 	# Add default layer.
 	var layer_default = Layer.new()
+	layer_default.name = "default"
 	layers["default"] = layer_default
 
 
-	if data.has("layer_list"):
-		for layer_key in data["layer_list"]:
+	if data.has("layers"):
+		for layer_key in data["layers"]:
 			var layer: Layer = Layer.new()
-			var layer_data = data["layer_list"][layer_key]
+			var layer_data = data["layers"][layer_key]
 			layer.load(layer_data)
 
 			layers[layer_key] = layer
+			layer.name = layer_key
 	else:
-		Utils.print_warning("Layers without layer_list")
+		Utils.print_warning("Layers without layers array")
 
 	if data.has("current_layer_key"):
 		current_layer_key = data["current_layer_key"]
