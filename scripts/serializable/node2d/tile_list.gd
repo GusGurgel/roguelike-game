@@ -40,12 +40,12 @@ func erase_tile(pos: Vector2i) -> bool:
 		tiles.erase(pos_key)
 		layer.astar_grid.set_point_solid(pos, false)
 		return true
-	return false
+	else:
+		return false
 
 ################################################################################
 # Serialization
 ################################################################################
-
 
 func load(data: Dictionary) -> void:
 	super.load(data)

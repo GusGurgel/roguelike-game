@@ -59,13 +59,11 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _handle_grab_item(event_key: InputEventKey) -> void:
 	if event_key.is_action("grab"):
-		for tile in game.layers.get_current_layer().get_tiles(grid_position):
-			var tile_item: Item = tile as Item
-			if tile_item:
-				add_item_to_inventory(tile_item)
-				return
-
-		game.game_ui.prompt_text("No item to grab.")
+		var item = game.layers.get_current_layer().items.get_item(grid_position)
+		if item:
+			add_item_to_inventory(item)
+		else:
+			game.game_ui.prompt_text("No item to grab.")
 
 				
 func _handle_camera_zoom(event_key: InputEventKey) -> void:
@@ -184,7 +182,7 @@ func set_max_mana(new_max_mana: int) -> void:
 
 
 func add_item_to_inventory(item: Item) -> void:
-	# game.get_current_layer().erase_item(item.grid_position)
+	game.layers.get_current_layer().items.erase_item(item.grid_position)
 	item.visible = false
 
 	var item_frame: ItemFrame = item_frame_scene.instantiate()

@@ -9,16 +9,18 @@ var layer: Layer
 func _init(_layer: Layer):
 	layer = _layer
 
+
 func get_item(pos: Vector2i) -> Item:
 	return items.get(Utils.vector2i_to_string(pos))
 
 
-func add_item(item: Item) -> void:
+## Return if the item was drop or not.
+func add_item(item: Item) -> bool:
 	var pos_key: String = Utils.vector2i_to_string(item.grid_position)
 
 	if items.has(pos_key):
 		Utils.print_warning("An item already exists in the position (%s)" % pos_key)
-		return
+		return false
 	items[pos_key] = item
 
 	if item.get_parent():
@@ -26,7 +28,21 @@ func add_item(item: Item) -> void:
 	else:
 		add_child(item)
 
+	return true
 
+## Returns if the item was remove or not.
+func erase_item(pos: Vector2i) -> bool:
+	var pos_key: String = Utils.vector2i_to_string(pos)
+
+	if items.has(pos_key):
+		items.erase(pos_key)
+		return true
+	else:
+		return false
+
+################################################################################
+# Serialization
+################################################################################
 func load(data: Dictionary) -> void:
 	super.load(data)
 	for item_key in data:
