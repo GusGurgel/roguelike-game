@@ -1,11 +1,11 @@
 extends Tile
 class_name Item
 
-@export var usable: bool = false
-@export var equippable: bool = false
-@export var equipped: bool = false
-@export var type: String = "default"
-@export var description: String = "default"
+var usable: bool = false
+var equippable: bool = false
+var equipped: bool = false
+var type: String = "default"
+var description: String = "default"
 
 signal on_unequip
 
@@ -23,7 +23,6 @@ func _ready():
 
 
 func use() -> void:
-	print("Using %s..." % tile_name)
 	queue_free()
 
 

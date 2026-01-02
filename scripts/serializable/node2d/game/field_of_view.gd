@@ -1,7 +1,6 @@
 extends Node
 class_name FieldOfView
 
-var game: Game
 var fov_radius: int = 8
 
 # Armazena os tiles visíveis do frame ANTERIOR
@@ -86,7 +85,7 @@ func _cast_light(origin: Vector2i, row: int, start_slope: float, end_slope: floa
 
 			# --- MUDANÇA PRINCIPAL NA LÓGICA DE BLOQUEIO ---
 			# Agora verificamos o array retornado por get_tiles
-			var tiles_at_pos = game.get_tiles(pos)
+			var tiles_at_pos = Globals.game.get_tiles(pos)
 			var is_current_pos_transparent = true
 			
 			# Se QUALQUER coisa na célula bloquear a visão, ela é considerada bloqueada
@@ -112,7 +111,7 @@ func _cast_light(origin: Vector2i, row: int, start_slope: float, end_slope: floa
 
 ## Helper atualizado para lidar com Array[Tile]
 func _mark_visible(pos: Vector2i):
-	var tiles_at_pos = game.get_tiles(pos)
+	var tiles_at_pos = Globals.game.get_tiles(pos)
 	
 	# Adiciona todos os tiles/entidades dessa posição à lista do frame atual
 	for tile in tiles_at_pos:

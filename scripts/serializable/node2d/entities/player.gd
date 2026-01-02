@@ -9,12 +9,6 @@ class_name Player
 
 var camera: Camera2D = Camera2D.new()
 
-## Reference to the game Scene
-var game: Game
-
-## Reference to the field of view Node
-var field_of_view: FieldOfView
-
 var item_frame_scene = preload("res://scenes/ui/item_frame.tscn")
 
 var melee_weapon: MeleeWeapon = null
@@ -31,11 +25,6 @@ func _ready():
 	camera.position += texture.get_size() / 2
 	camera.zoom = Vector2.ONE * 2
 
-	if not game:
-		Utils.print_warning("Player won't have a reference to the current game.")
-		return
-
-	field_of_view = game.get_node("FieldOfView")
 	update_fov.call_deferred()
 
 	# Call set methods to trigger UI update
@@ -54,16 +43,15 @@ func _unhandled_input(event: InputEvent) -> void:
 			_handle_camera_zoom(event_key)
 			_handle_grab_item(event_key)
 			if event_key.is_action("wait"):
-				if game:
-					pass_turns(1)
+				pass_turns(1)
 
 func _handle_grab_item(event_key: InputEventKey) -> void:
 	if event_key.is_action("grab"):
-		var item = game.layers.get_current_layer().items.get_item(grid_position)
+		var item = Globals.game.layers.get_current_layer().items.get_item(grid_position)
 		if item:
 			add_item_to_inventory(item)
 		else:
-			game.game_ui.prompt_text("No item to grab.")
+			Globals.game_ui.prompt_text("No item to grab.")
 
 				
 func _handle_camera_zoom(event_key: InputEventKey) -> void:
@@ -93,32 +81,32 @@ func _handle_movement(event_key: InputEventKey):
 		move += Vector2i.DOWN + Vector2i.LEFT
 
 	## Check for collision and change player position
-	if game and move != Vector2i.ZERO:
-		if game.layers.get_current_layer().can_move_to_position(grid_position + move):
+	if move != Vector2i.ZERO:
+		if Globals.game.layers.get_current_layer().can_move_to_position(grid_position + move):
 			grid_position += move
 			update_fov.call_deferred()
 			pass_turns(turns_to_move)
 
-			for tile in game.layers.get_current_layer().get_tiles(grid_position):
+			for tile in Globals.game.layers.get_current_layer().get_tiles(grid_position):
 				var tile_item: Item = tile as Item
 
 				if tile_item:
-					game.game_ui.prompt_text(
+					Globals.game_ui.prompt_text(
 						"[color=#fae7ac]%s[/color] (grab: g)" % tile_item.tile_name
 					)
 
 		else:
-			for tile in game.layers.get_current_layer().get_tiles(grid_position + move):
+			for tile in Globals.game.layers.get_current_layer().get_tiles(grid_position + move):
 				var enemy: Enemy = tile as Enemy
 				if enemy:
 					pass_turns(turns_to_move)
 					var is_enemy_dead: bool = enemy.get_hit(self, get_damage())
 					if is_enemy_dead:
-						game.game_ui.prompt_text(
+						Globals.game_ui.prompt_text(
 							"[color=#88A8C5]%s[/color] kills [color=#d37073]%s[/color]" % [entity_name, enemy.entity_name]
 						)
 					else:
-						game.game_ui.prompt_text(
+						Globals.game_ui.prompt_text(
 							"[color=#88A8C5]%s[/color] hits [color=#d37073]%s[/color]. (Damage: %d; %s Life: %d)" % \
 							[
 								entity_name,
@@ -131,13 +119,12 @@ func _handle_movement(event_key: InputEventKey):
 
 ## Update fov using player position
 func update_fov() -> void:
-	if field_of_view:
-		field_of_view.update_fov(grid_position)
+	Globals.game.field_of_view.update_fov(grid_position)
 
 
 ## Pass turns and heal player
 func pass_turns(turns_count: int) -> void:
-	game.turn += turns_count
+	Globals.game.turn += turns_count
 	set_health(health + heal_per_turns * turns_count)
 
 
@@ -145,7 +132,7 @@ func get_hit(entity: Entity, damage: int) -> bool:
 	self.health -= damage
 	set_health(health)
 
-	game.game_ui.prompt_text(
+	Globals.game_ui.prompt_text(
 		"[color=#d37073]%s[/color] hits [color=#88A8C5]%s[/color]. (Damage: %d)" % \
 		[
 			entity.entity_name,
@@ -159,35 +146,35 @@ func get_hit(entity: Entity, damage: int) -> bool:
 		
 func set_health(new_health: int) -> void:
 	health = new_health
-	game.game_ui.health_progress_bar.value = health
-	game.game_ui.health_label.text = "%d/%d" % [health, max_health]
+	Globals.game_ui.health_progress_bar.value = health
+	Globals.game_ui.health_label.text = "%d/%d" % [health, max_health]
 
 
 func set_max_health(new_max_health: int) -> void:
 	max_health = new_max_health
-	game.game_ui.health_progress_bar.max_value = max_health
-	game.game_ui.health_label.text = "%d/%d" % [health, max_health]
+	Globals.game_ui.health_progress_bar.max_value = max_health
+	Globals.game_ui.health_label.text = "%d/%d" % [health, max_health]
 
 
 func set_mana(new_mana: int) -> void:
 	mana = new_mana
-	game.game_ui.mana_progress_bar.value = mana
-	game.game_ui.mana_label.text = "%d/%d" % [mana, max_mana]
+	Globals.game_ui.mana_progress_bar.value = mana
+	Globals.game_ui.mana_label.text = "%d/%d" % [mana, max_mana]
 
 
 func set_max_mana(new_max_mana: int) -> void:
 	max_mana = new_max_mana
-	game.game_ui.mana_progress_bar.max_value = max_mana
-	game.game_ui.mana_label.text = "%d/%d" % [mana, max_mana]
+	Globals.game_ui.mana_progress_bar.max_value = max_mana
+	Globals.game_ui.mana_label.text = "%d/%d" % [mana, max_mana]
 
 
 func add_item_to_inventory(item: Item) -> void:
-	game.layers.get_current_layer().items.erase_item(item.grid_position)
+	Globals.game.layers.get_current_layer().items.erase_item(item.grid_position)
 	item.visible = false
 
 	var item_frame: ItemFrame = item_frame_scene.instantiate()
 	item_frame.item = item
-	game.game_ui.add_item_frame(item_frame)
+	Globals.game_ui.add_item_frame(item_frame)
 
 
 func get_damage() -> int:

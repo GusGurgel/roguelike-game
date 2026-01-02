@@ -21,10 +21,10 @@ func load_game_from_path(path: String, _game_ui: GameUI) -> Variant:
 
 func load_game_from_dict(dict: Dictionary, _game_ui: GameUI) -> Game:
 	var _game: Game = Game.new()
-	_game.game_ui = _game_ui
 
 	Globals.game = _game
 	
+	Globals.game_ui = game_ui
 	_game.load(dict)
 	_game.name = "Game"
 

@@ -24,33 +24,25 @@ var tiles_presets: TilePresetList = TilePresetList.new()
 var turn: int = 0:
 	set(new_turn):
 		layers.get_current_layer().entities.alert_entities_new_turn(turn, new_turn)
-		game_ui.turn_value_label.text = str(new_turn)
+		Globals.game_ui.turn_value_label.text = str(new_turn)
 		turn = new_turn
-
-var game_ui: GameUI
 	
 @onready var tile_painter: TilePainter = TilePainter.new()
 
 
 func _ready() -> void:
 	field_of_view.name = "FieldOfView"
-	tile_painter.name = "TilePainter"
-	layers.name = "Layers"
 	add_child(field_of_view)
+	tile_painter.name = "TilePainter"
 	add_child(tile_painter)
-
-	## Set reference to game on player and field_of_view.
-	player.game = self
-	field_of_view.game = self
-
+	layers.name = "Layers"
 	add_child(layers)
 
 	## Add player
-	add_child(player)
-	game_ui.debug_ui.player = player
-	player.tile_grid_position_change.connect(game_ui.debug_ui._on_player_change_grid_position)
-	player.grid_position = player.grid_position
 	player.name = "Player"
+	add_child(player)
+	player.tile_grid_position_change.connect(Globals.game_ui.debug_ui._on_player_change_grid_position)
+	player.grid_position = player.grid_position
 
 
 ## Set a tile by a preset. [br]

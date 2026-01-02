@@ -65,6 +65,7 @@ var hex_color_regex: RegEx = RegEx.create_from_string(
 ################################################################################
 
 var game: Game = null
+var game_ui: GameUI = null
 var game_data: Dictionary = {}
 
 var astar_grid_region = Rect2i(Vector2i(-100, -100), Vector2i(300, 300))
