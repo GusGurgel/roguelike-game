@@ -4,9 +4,9 @@ class_name Layer
 
 var astar_grid: AStarGrid2D = AStarGrid2D.new()
 
-var tiles: TileList = TileList.new(astar_grid)
-var entities: EntityList = EntityList.new(astar_grid)
-var items: ItemsList = ItemsList.new()
+var tiles: TileList = TileList.new(self)
+var entities: EntityList = EntityList.new(self)
+var items: ItemsList = ItemsList.new(self)
 
 
 ## Return all tiles of a grid_position. Including basic tiles and entity tiles.
@@ -42,6 +42,7 @@ func can_move_to_position(pos: Vector2i) -> bool:
 func load(data: Dictionary) -> void:
 	super.load(data)
 	
+	astar_grid.region = Globals.astar_grid_region
 	astar_grid.update()
 
 	tiles.load(data["tiles"])

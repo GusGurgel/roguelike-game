@@ -1,5 +1,4 @@
 extends Node
-## Utils functions
 
 
 ################################################################################
@@ -7,7 +6,6 @@ extends Node
 ################################################################################
 
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
-
 
 ################################################################################
 # Godot
@@ -20,36 +18,24 @@ func _ready():
 # Functions
 ################################################################################
 
-
-## Checks if a dictionary has all keys.
-func dictionary_has_all(dict: Dictionary, keys: Array[String]) -> bool:
-	for key in keys:
-		if not dict.has(key):
-			return false
-	
-	return true
+var dict_string_to_enemy_type: Dictionary[String, Globals.EntityType] = {
+	"default" = Globals.EntityType.ENTITY,
+	"enemy" = Globals.EntityType.ENEMY,
+	"entity" = Globals.EntityType.ENTITY
+}
+func string_to_enemy_type(string: String) -> Globals.EntityType:
+	return dict_string_to_enemy_type.get(string.strip_edges().to_lower(), dict_string_to_enemy_type["default"])
 
 
 ## Return true if any element of array has propriety == value. Else, returns false.
-func any_of_array_has_propriety_with_value(array: Array, propriety: String, value: Variant) -> bool:
+func any_of_array_has_propriety_with_value(
+	array: Array, propriety: String, value: Variant
+) -> bool:
 	for element in array:
 		if element and element.get(propriety) == value:
 			return true
 	
 	return false
-
-
-## Converts integer grid position to a global position.
-func grid_position_to_global_position(grid_position: Vector2i) -> Vector2:
-	return grid_position * Globals.tile_size
-
-
-## Converts float global position to a integer grid_position.
-func global_position_to_grid_position(global_position: Vector2) -> Vector2i:
-	return Vector2(
-		global_position.x / Globals.tile_size.x,
-		global_position.y / Globals.tile_size.y
-	)
 
 
 ## Print a rich warning message on the terminal.
@@ -72,6 +58,22 @@ func get_random_direction() -> Vector2i:
 	return Vector2i(rng.randi_range(-1, 1), rng.randi_range(-1, 1))
 
 
+########################################
+# Position
+########################################
+
+## Converts integer grid position to a global position.
+func grid_position_to_global_position(grid_position: Vector2i) -> Vector2:
+	return grid_position * Globals.tile_size
+
+
+## Converts float global position to a integer grid_position.
+func global_position_to_grid_position(global_position: Vector2) -> Vector2i:
+	return Vector2(
+		global_position.x / Globals.tile_size.x,
+		global_position.y / Globals.tile_size.y
+	)
+
 ## Serialize a Vector2i.
 func vector2i_to_string(pos: Vector2i) -> String:
 	return "%s,%s" % [pos.x, pos.y]
@@ -93,9 +95,17 @@ func string_to_vector2i(pos: String) -> Vector2i:
 	return grid_position
 
 
-################################################################################
-# Dictionary Functions
-################################################################################
+########################################
+# Dictionary 
+########################################
+
+## Checks if a dictionary has all keys.
+func dict_has_all(dict: Dictionary, keys: Array[String]) -> bool:
+	for key in keys:
+		if not dict.has(key):
+			return false
+	
+	return true
 
 ## Tests if dict.has(key) and str(dict[key]).to_lower == value
 func dict_has_and_is_equal_lower_string(dict: Dictionary, key: String, value: String) -> bool:

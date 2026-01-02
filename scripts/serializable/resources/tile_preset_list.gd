@@ -17,7 +17,7 @@ func load(data: Dictionary) -> void:
 
 	# Adds default tile preset
 	tiles_presets["default"] = Tile.new()
-	tiles_presets["default"].texture = Globals.get_game().textures.get_texture("default")
+	tiles_presets["default"].texture = Globals.game.textures.get_texture("default")
 
 	for tile_preset_key in data:
 		var tile_preset_data: Dictionary = data[tile_preset_key]

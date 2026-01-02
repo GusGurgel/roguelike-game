@@ -3,6 +3,11 @@ class_name ItemsList
 
 var items: Dictionary[String, Item]
 
+var layer: Layer
+
+
+func _init(_layer: Layer):
+	layer = _layer
 
 func get_item(pos: Vector2i) -> Item:
 	return items.get(Utils.vector2i_to_string(pos))

@@ -53,7 +53,4 @@ var hex_color_regex: RegEx = RegEx.create_from_string("^#([0-9a-fA-F]{3}|[0-9a-f
 var game: Game = null
 var game_data: Dictionary = {}
 
-func get_game() -> Game:
-	if game == null:
-		Utils.print_warning("Game is not ready!")
-	return game
+var astar_grid_region = Rect2i(Vector2i(-1000, -1000), Vector2i(2000, 2000))

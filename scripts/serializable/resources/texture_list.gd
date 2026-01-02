@@ -40,7 +40,7 @@ func load(data: Dictionary) -> void:
 	for key in data:
 		var texture_data = data[key]
 
-		if not Utils.dictionary_has_all(texture_data, ["x", "y"]):
+		if not Utils.dict_has_all(texture_data, ["x", "y"]):
 			Utils.print_warning("Texture '%s' without position." % key)
 			continue
 

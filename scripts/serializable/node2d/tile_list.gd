@@ -2,11 +2,11 @@ extends SerializableNode2D
 class_name TileList
 
 var tiles: Dictionary[String, Tile]
-var astar_grid: AStarGrid2D
+var layer: Layer
 
 
-func _init(_astar_grid: AStarGrid2D):
-	astar_grid = _astar_grid
+func _init(_layer: Layer):
+	layer = _layer
 
 
 func get_tile(pos: Vector2i) -> Tile:
@@ -26,10 +26,10 @@ func set_tile(tile: Tile) -> void:
 	else:
 		add_child(tile)
 
-	## Update Top Left and Top Right.
-	astar_grid.region = astar_grid.region.expand(tile.grid_position + Vector2i.ONE)
-	astar_grid.update()
-	astar_grid.set_point_solid(tile.grid_position, tile.has_collision)
+
+	layer.astar_grid.set_point_solid(tile.grid_position, tile.has_collision)
+	if tile.grid_position == Vector2i(55, 74):
+		print("tile_list: " + str(layer.astar_grid.is_point_solid(Vector2i(55, 74))))
 
 
 func erase_tile(pos: Vector2i) -> bool:
@@ -38,7 +38,7 @@ func erase_tile(pos: Vector2i) -> bool:
 	if tiles.has(pos_key):
 		tiles[pos_key].queue_free()
 		tiles.erase(pos_key)
-		astar_grid.set_point_solid(pos, false)
+		layer.astar_grid.set_point_solid(pos, false)
 		return true
 	return false
 

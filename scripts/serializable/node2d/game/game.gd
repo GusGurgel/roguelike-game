@@ -8,7 +8,14 @@ var field_of_view: FieldOfView = FieldOfView.new()
 ## Just file/string JSON parsed to a Dictionary.
 var raw_data: Dictionary
 
-var player: Player = Player.new()
+var layers: LayerList = LayerList.new()
+var layer: Layer:
+	get():
+		return layers.get_current_layer()
+	set(new_layer):
+		pass
+
+var player: Player = Player.new(Layer.new())
 ## Dictionary of game textures.
 var textures: TextureList = TextureList.new()
 ## Dictionary of presets of tiles
@@ -16,27 +23,11 @@ var tiles_presets: TilePresetList = TilePresetList.new()
 
 var turn: int = 0:
 	set(new_turn):
-		# Alert layer entities thats the turn has change
-		# var current_layer_entities: Dictionary[String, Item] = get_current_layer().entities
-		# for entity_key in current_layer_entities:
-		# 	var entity: Item = current_layer_entities[entity_key]
-		# 	if is_instance_valid(entity):
-		# 		entity._on_turn_updated(turn, new_turn)
-		# 	else:
-		# 		# Remove invalid entity
-		# 		current_layer_entities.erase(entity_key)
+		layers.get_current_layer().entities.alert_entities_new_turn(turn, new_turn)
 		game_ui.turn_value_label.text = str(new_turn)
 		turn = new_turn
 
-
 var game_ui: GameUI
-
-var layers: LayerList = LayerList.new()
-var layer: Layer:
-	get():
-		return layers.get_current_layer()
-	set(new_layer):
-		pass
 	
 @onready var tile_painter: TilePainter = TilePainter.new()
 
@@ -97,6 +88,9 @@ func set_tile_by_preset(
 func get_tiles(pos: Vector2i) -> Array[Tile]:
 	return layers.get_current_layer().get_tiles(pos)
 
+################################################################################
+# Serialization
+################################################################################
 
 ## Load object property from `dict` parameter. 
 func load(data: Dictionary) -> void:

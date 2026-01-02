@@ -198,12 +198,9 @@ func get_damage() -> int:
 	else:
 		return base_damage
 
-
-func get_as_dict(_return_grid_position: bool = false) -> Dictionary:
-	return {
-		entity = super.get_as_dict(true),
-	}
-
+################################################################################
+# Serialization
+################################################################################
 
 func load(data: Dictionary) -> void:
 	super.load(data)

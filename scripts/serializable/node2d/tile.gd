@@ -89,14 +89,14 @@ func get_as_dict(return_grid_position: bool = false) -> Dictionary:
 func load(data: Dictionary) -> void:
 	super.load(data)
 
-	var game: Game = Globals.get_game()
+	var game: Game = Globals.game
 	var warnings: PackedStringArray = []
 
 	if not game:
 		return
 
 	if data.has("grid_position"):
-		if Utils.dictionary_has_all(data["grid_position"], ["x", "y"]):
+		if Utils.dict_has_all(data["grid_position"], ["x", "y"]):
 			grid_position = Vector2i(data["grid_position"]["x"], data["grid_position"]["y"])
 		else:
 			grid_position = Vector2i.ZERO
