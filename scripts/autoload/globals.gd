@@ -9,15 +9,15 @@ var tile_size: Vector2i = Vector2i(16, 16)
 var tileset_count: Vector2i = tileset_size / tile_size
 var default_texture: Vector2i = Vector2i(21, 9)
 
+################################################################################
+# Enums
+################################################################################
+
 enum SetTileMode {
 	OVERRIDE_ALL,
 	OVERRIDE_ONLY_WITH_COLLISION,
 	OVERRIDE_ONLY_WITH_NOT_COLLISION
 }
-
-################################################################################
-# Enums
-################################################################################
 
 enum EntityType {
 	ENTITY,
@@ -56,6 +56,9 @@ var scenes: Dictionary[String, PackedScene] = {
 
 var vector2i_string_regex: RegEx = RegEx.create_from_string(
 	"^(-?\\d+),(-?\\d+)$"
+)
+var rect2i_string_regex: RegEx = RegEx.create_from_string(
+	"^(-?\\d+),(-?\\d+),(-?\\d+),(-?\\d+)$"
 )
 var hex_color_regex: RegEx = RegEx.create_from_string(
 	"^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$"
@@ -149,7 +152,7 @@ var wall_tile_defaults = {
 
 var floor_tile_defaults = {
 	"is_in_view" = false,
-	"is_transparent" = false,
+	"is_transparent" = true,
 	"is_explored" = false,
 	"has_collision" = false
 }

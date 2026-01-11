@@ -15,6 +15,8 @@ var dungeon_levels: Array[DungeonLevel] = []
 
 var tile_preset_list: TilePresetList = TilePresetList.new()
 
+var layers: LayerList = LayerList.new()
+
 var melee_weapons_assets: Array[MeleeWeapon]
 var range_weapons_assets: Array[RangeWeapon]
 var enemies_assets: Array[Enemy]
@@ -108,6 +110,7 @@ func load_dungeon_levels(data: Array) -> void:
 
 		dungeon_levels.append(dungeon_level)
 
+
 func load_weapons(weapons_data: Array) -> void:
 	for weapon_data in weapons_data:
 		var weapon: Item
@@ -197,22 +200,29 @@ func load_enemies(enemies_data: Array) -> void:
 		enemies_assets.append(enemy)
 
 
+func generate_layer_list() -> void:
+	for level in dungeon_levels:
+		var layer = Layer.new()
+		layer.dungeon_level = level
+		layer.rooms = layer.tiles.generate_basic_dungeon(
+			Rect2i(0, 0, 50, 50),
+			5,
+			10,
+			10,
+			level.wall_tile_preset,
+			level.floor_tile_preset
+		)
+
+		layers.layers[level.name] = layer
+		layers.layers_keys_ordered.append(level.name)
+
+	layers.current_layer_key = layers.layers_keys_ordered[0]
+
+	player_asset.grid_position = layers.get_current_layer().rooms[0].get_center()
+
+
 ## Return a complete random generated game based on the asset_bundle
 func generate_json_game() -> Dictionary:
-	## Set the current tile preset on Globals
-	Globals.tile_preset_list = tile_preset_list
-
-	var layers: LayerList = LayerList.new()
-
-	layers.layers[dungeon_levels[0].name] = Layer.new()
-	layers.current_layer_key = layers.layers.keys()[1]
-
-	var current_layer = layers.get_current_layer()
-
-	var first_dungeon_level: DungeonLevel = dungeon_levels[0]
-	current_layer.set_tile_by_preset(first_dungeon_level.wall_tile_preset, Vector2i(1, 1))
-	current_layer.set_tile_by_preset(first_dungeon_level.floor_tile_preset, Vector2i(2, 2))
-
 	return {
 		"layer_list": layers.serialize(),
 		"player": player_asset.serialize(),
@@ -222,6 +232,23 @@ func generate_json_game() -> Dictionary:
 	}
 
 func load(data: Dictionary) -> void:
+	Globals.tile_preset_list = tile_preset_list
+
+	# Adding the default tile
+	textures["default"] = {
+		"x": Globals.default_texture.x,
+		"y": Globals.default_texture.y
+	}
+
+	var default_tile = Tile.new()
+	default_tile.tile_color_hex = "#c711f0"
+	default_tile.texture_name = "default"
+	default_tile.tile_name = "default"
+	default_tile.tile_description = "..."
+	default_tile.has_collision = false
+	default_tile.is_transparent = true
+	tile_preset_list.tiles_presets["default"] = default_tile
+
 	load_player(data["player"])
 
 	load_dungeon_levels(data["dungeon_levels"]["items"])
@@ -229,6 +256,8 @@ func load(data: Dictionary) -> void:
 	load_weapons(data["weapons"]["items"])
 
 	load_enemies(data["enemies"]["items"])
+
+	generate_layer_list()
 
 	Utils.copy_from_dict_if_exists(
 		self,

@@ -96,13 +96,33 @@ func string_to_vector2i(pos: String) -> Vector2i:
 	var grid_position: Vector2i = Vector2i.ZERO
 
 	if not regex_result:
-		Globals.print_warning("Invalid tilemap tile_key '%s'" % pos)
+		Globals.print_warning("Invalid vector2i string '%s'" % pos)
 		return grid_position
 
 	grid_position.x = regex_result.strings[1].to_int()
 	grid_position.y = regex_result.strings[2].to_int()
 	return grid_position
 
+func rect2i_to_string(rect: Rect2i) -> String:
+	return "%s,%s,%s,%s" % [rect.position.x, rect.position.y, rect.size.x, rect.size.y]
+
+func string_to_rect2i(rect: String) -> Rect2i:
+	var regex_result: RegExMatch = Globals.rect2i_string_regex.search(rect)
+	var rect_result: Rect2i = Rect2i()
+
+	if rect == "":
+		return rect_result
+
+	if not regex_result:
+		Globals.print_warning("Invalid rect2i string '%s'" % rect)
+		return rect_result
+
+	rect_result.position.x = regex_result.strings[1].to_int()
+	rect_result.position.y = regex_result.strings[2].to_int()
+	rect_result.size.x = regex_result.strings[3].to_int()
+	rect_result.size.y = regex_result.strings[4].to_int()
+
+	return rect_result
 
 ########################################
 # Dictionary 
