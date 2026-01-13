@@ -13,10 +13,25 @@ func use() -> void:
 	Globals.game.player.health += health_increase
 
 
+func copy(healing_potion) -> void:
+	super.copy(healing_potion)
+
+	health_increase = healing_potion.health_increase
+
+
+static func clone(healing_potion) -> Variant:
+	var result_healing_potion = HealingPotion.new()
+	result_healing_potion.copy(healing_potion)
+
+	return result_healing_potion
+
+
 func get_info() -> String:
 	var info: String = super.get_info()
 
-	info += """\nHealth Regeneration: %s""" % health_increase
+	info = Utils.append_info_line(info, {
+		"Health Regeneration": str(health_increase)
+	})
 
 	return info
 

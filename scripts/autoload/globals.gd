@@ -172,3 +172,14 @@ var floor_tile_defaults = {
 	"is_explored" = false,
 	"has_collision" = false
 }
+
+var healing_potion_defaults = {
+	"tileset_position": {
+		"x": 33,
+		"y": 13
+	},
+	"tile_name": "Healing Potion",
+	"tile_description": "A potion that's heal 20 points of health",
+	"health_increase": 20,
+	"tile_hex_color": "#dc3545"
+}

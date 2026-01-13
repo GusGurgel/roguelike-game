@@ -68,6 +68,7 @@ func copy(tile) -> void:
 	tile_name = tile.tile_name
 	tile_description = tile.tile_description
 	texture_name = tile.texture_name
+	tile_color_hex = tile.tile_color_hex
 
 
 ## Copy information from a preset.
@@ -81,7 +82,7 @@ static func from_tile_preset(preset_key: String) -> Tile:
 
 
 func get_info() -> String:
-	var info: String 
+	var info: String
 
 	info = Utils.append_info_line(info, {
 		"Name": tile_name,
@@ -168,18 +169,18 @@ func serialize() -> Dictionary:
 	var result: Dictionary = super.serialize()
 
 	if preset_name != "":
-		result["preset_name"] = self.preset_name
-		result["is_explored"] = self.is_explored
+		result["preset_name"] = preset_name
+		result["is_explored"] = is_explored
 	else:
-		result["texture"] = self.texture_name
-		result["has_collision"] = self.has_collision
-		result["is_explored"] = self.is_explored
-		result["is_in_view"] = self.is_in_view
-		result["is_transparent"] = self.is_transparent
-		result["tile_name"] = self.tile_name
-		result["tile_description"] = self.tile_description
+		result["texture"] = texture_name
+		result["has_collision"] = has_collision
+		result["is_explored"] = is_explored
+		result["is_in_view"] = is_in_view
+		result["is_transparent"] = is_transparent
+		result["tile_name"] = tile_name
+		result["tile_description"] = tile_description
 		if tile_color_hex != "":
-			result["color"] = self.tile_color_hex
+			result["color"] = tile_color_hex
 	
 	result["grid_position"] = {
 		x = self.grid_position.x,

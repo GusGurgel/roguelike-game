@@ -20,6 +20,7 @@ var layers: LayerList = LayerList.new()
 var melee_weapons_assets: Array[MeleeWeapon]
 var range_weapons_assets: Array[RangeWeapon]
 var enemies_assets: Array[Enemy]
+var healing_potion_asset: HealingPotion = HealingPotion.new()
 
 
 func add_texture(tile_data: Dictionary) -> String:
@@ -257,10 +258,8 @@ func generate_layer_list() -> void:
 				layer.entities.add_entity(layer.find_random_free_space_on_room(room), enemies_assets[Globals.rng.rand_weighted(enemies_weight)])
 
 			# Add a healing potion
-			if Globals.rng.randi_range(0, 2) == 2:
-				var healing_potion: HealingPotion = HealingPotion.new()
-				healing_potion.health_increase = 30
-				layer.items.add_item(layer.find_random_free_space_on_room(room), healing_potion, false)
+			if Globals.rng.randi_range(0, 1) == 1:
+				layer.items.add_item(layer.find_random_free_space_on_room(room), healing_potion_asset)
 
 		layers.layers[level.name] = layer
 		layers.layers_keys_ordered.append(level.name)
@@ -268,6 +267,19 @@ func generate_layer_list() -> void:
 	layers.current_layer_key = layers.layers_keys_ordered[0]
 
 	player_asset.grid_position = layers.get_current_layer().rooms[0].get_center()
+
+
+func load_healing_potion() -> void:
+	healing_potion_asset.texture_name = add_texture({
+		"name": Globals.healing_potion_defaults["tile_name"],
+		"texture": {
+			"tileset_position": Globals.healing_potion_defaults["tileset_position"]
+		}
+	})
+	healing_potion_asset.tile_name = Globals.healing_potion_defaults["tile_name"]
+	healing_potion_asset.tile_description = Globals.healing_potion_defaults["tile_description"]
+	healing_potion_asset.health_increase = Globals.healing_potion_defaults["health_increase"]
+	healing_potion_asset.tile_color_hex = Globals.healing_potion_defaults["tile_hex_color"]
 
 
 ## Return a complete random generated game based on the asset_bundle
@@ -305,6 +317,8 @@ func load(data: Dictionary) -> void:
 	load_weapons(data["weapons"]["items"])
 
 	load_enemies(data["enemies"]["items"])
+
+	load_healing_potion()
 
 	generate_layer_list()
 

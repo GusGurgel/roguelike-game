@@ -23,6 +23,8 @@ func add_item(pos: Vector2i, item: Item, clone: bool = true) -> bool:
 			item_to_add = MeleeWeapon.clone(item)
 		elif item is RangeWeapon:
 			item_to_add = RangeWeapon.clone(item)
+		elif item is HealingPotion:
+			item_to_add = HealingPotion.clone(item)
 		else:
 			item_to_add = Item.clone(item)
 	else:
