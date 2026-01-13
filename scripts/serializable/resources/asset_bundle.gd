@@ -201,6 +201,26 @@ func load_enemies(enemies_data: Array) -> void:
 		enemies_assets.append(enemy)
 
 
+func get_weight_array_by_level_index(vals: Array, index: float, max_index: float) -> Array:
+	var vals_float: Array = vals.map(func(val):
+		if "rarity" in val:
+			return val.rarity
+		elif "thread" in val:
+			return val.thread
+		else:
+			return 0
+	)
+	var min_val: float = vals_float.min()
+	var max_val: float = vals_float.max()
+
+	var factor: float = index / max_index
+
+	return vals_float.map(func(val):
+		var target: float = (min_val + max_val) - val
+		return 11 - round(val + (target - val) * factor)
+	)
+
+
 func generate_layer_list() -> void:
 	for level in dungeon_levels:
 		var layer = Layer.new()
@@ -214,13 +234,33 @@ func generate_layer_list() -> void:
 			level.floor_tile_preset
 		)
 
-		var enemy_position = layer.rooms[0].position + Vector2i.ONE
-		var item_position_1 = layer.rooms[0].get_center() + Vector2i.ONE
-		var item_position_2 = layer.rooms[0].get_center() + (Vector2i.ONE * 2)
+		var level_index: int = len(layers.layers_keys_ordered)
+		var level_max_index = len(dungeon_levels)
 
-		layer.entities.add_entity(enemy_position, enemies_assets[0])
-		layer.items.add_item(item_position_1, melee_weapons_assets[0])
-		layer.items.add_item(item_position_2, range_weapons_assets[0])
+		var range_weapons_weight = get_weight_array_by_level_index(range_weapons_assets, level_index, level_max_index)
+		var melee_weapons_weight = get_weight_array_by_level_index(melee_weapons_assets, level_index, level_max_index)
+		var enemies_weight = get_weight_array_by_level_index(enemies_assets, level_index, level_max_index)
+
+
+		for room in layer.rooms:
+			# Add a weapon
+			if Globals.rng.randi_range(0, 1) == 1:
+				if Globals.rng.randi_range(0, 1) == 1:
+					# Add a melee_weapon
+					layer.items.add_item(layer.find_random_free_space_on_room(room), melee_weapons_assets[Globals.rng.rand_weighted(melee_weapons_weight)])
+				else:
+					# Add a range_weapon
+					layer.items.add_item(layer.find_random_free_space_on_room(room), range_weapons_assets[Globals.rng.rand_weighted(range_weapons_weight)])
+
+			# Add a enemy
+			if Globals.rng.randi_range(0, 1) == 1:
+				layer.entities.add_entity(layer.find_random_free_space_on_room(room), enemies_assets[Globals.rng.rand_weighted(enemies_weight)])
+
+			# Add a healing potion
+			if Globals.rng.randi_range(0, 2) == 2:
+				var healing_potion: HealingPotion = HealingPotion.new()
+				healing_potion.health_increase = 30
+				layer.items.add_item(layer.find_random_free_space_on_room(room), healing_potion, false)
 
 		layers.layers[level.name] = layer
 		layers.layers_keys_ordered.append(level.name)

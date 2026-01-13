@@ -38,4 +38,8 @@ func load(data: Dictionary) -> void:
 
 func serialize() -> Dictionary:
 	var result: Dictionary = super.serialize()
+
+	result["type"] = "healing_potion"
+	result["health_increase"] = health_increase
+
 	return result

@@ -965,7 +965,7 @@
           "description": "A short, rust‑stained blade whose edge is nicked from countless scrapes. The hilt is wrapped in cracked leather, and the pommel bears a soot‑blackened iron sphere that feels cold to the touch.",
           "color": "#3a3a3a"
         },
-        "rarity": 2,
+        "rarity": 10,
         "weight": 2,
         "mana_cost": 1,
         "weapon_type": "melee",

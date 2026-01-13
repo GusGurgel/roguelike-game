@@ -1,14 +1,8 @@
 extends Node
 
 ################################################################################
-# Tiles
+# Godot
 ################################################################################
-
-var tileset_size: Vector2i = Vector2i(784, 352)
-var tile_size: Vector2i = Vector2i(16, 16)
-var tileset_count: Vector2i = tileset_size / tile_size
-var default_texture: Vector2i = Vector2i(21, 9)
-var blank_atlas_texture: AtlasTexture = AtlasTexture.new()
 
 func _ready():
 	blank_atlas_texture.region = Rect2(
@@ -18,6 +12,16 @@ func _ready():
 		Globals.tile_size.y
 	)
 	blank_atlas_texture.atlas = monochrome_texture
+	rng.randomize()
+
+################################################################################
+# Tiles
+################################################################################
+var tileset_size: Vector2i = Vector2i(784, 352)
+var tile_size: Vector2i = Vector2i(16, 16)
+var tileset_count: Vector2i = tileset_size / tile_size
+var default_texture: Vector2i = Vector2i(21, 9)
+var blank_atlas_texture: AtlasTexture = AtlasTexture.new()
 
 ################################################################################
 # Enums
@@ -129,6 +133,8 @@ var enemies_configuration: Dictionary = {
 ################################################################################
 # Globals
 ################################################################################
+
+var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 
 var tile_preset_list: TilePresetList = TilePresetList.new()
 

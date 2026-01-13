@@ -13,6 +13,7 @@ signal on_unequip
 func _init():
 	super._init(true)
 
+
 func _ready():
 	super._ready()
 	is_transparent = true

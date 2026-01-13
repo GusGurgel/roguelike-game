@@ -1,19 +1,5 @@
 extends Node
 
-
-################################################################################
-# Consts
-################################################################################
-
-var rng: RandomNumberGenerator = RandomNumberGenerator.new()
-
-################################################################################
-# Godot
-################################################################################
-
-func _ready():
-	rng.randomize()
-
 ################################################################################
 # Functions
 ################################################################################
@@ -73,7 +59,17 @@ func append_info_line(info_text: String, values: Dictionary[String, String]) -> 
 
 ## Return a random Vector2i direction.
 func get_random_direction() -> Vector2i:
-	return Vector2i(rng.randi_range(-1, 1), rng.randi_range(-1, 1))
+	return Vector2i(Globals.rng.randi_range(-1, 1), Globals.rng.randi_range(-1, 1))
+
+func get_random_point_in_rect(rect_area: Rect2i) -> Vector2i:
+	# Generate a random x-coordinate within the rect's horizontal range
+	var random_x = Globals.rng.randi_range(rect_area.position.x, rect_area.position.x + rect_area.size.x)
+	
+	# Generate a random y-coordinate within the rect's vertical range
+	var random_y = Globals.rng.randi_range(rect_area.position.y, rect_area.position.y + rect_area.size.y)
+	
+	# Return the new Vector2 point
+	return Vector2i(random_x, random_y)
 
 
 ########################################

@@ -45,6 +45,25 @@ func can_move_to_position(pos: Vector2i) -> bool:
 	var pos_tiles: Array[Tile] = get_tiles(pos)
 	return not Utils.any_of_array_has_propriety_with_value(pos_tiles, "has_collision", true)
 
+func position_has_only_floor(pos: Vector2i) -> bool:
+	var current_tiles: Array[Tile] = get_tiles(pos)
+
+	for tile in current_tiles:
+		if tile is Item or tile is Entity:
+			return false
+		if tile is Tile and tile.has_collision:
+			return false
+	
+	return true
+
+func find_random_free_space_on_room(room: Rect2i) -> Vector2i:
+	var it = 0
+
+	var pos = Utils.get_random_point_in_rect(room)
+	while not position_has_only_floor(pos) and it < 100:
+		pos = Utils.get_random_point_in_rect(room)
+		it += 1
+	return pos
 
 ################################################################################
 # Serialization
