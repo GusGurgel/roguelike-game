@@ -5,7 +5,7 @@ var item: Item
 
 @export var name_label: Label
 @export var use_button: Button
-@export var equipe_button: Button
+@export var equip_button: Button
 @export var drop_button: Button
 @export var texture_rect: TextureRect
 
@@ -17,15 +17,15 @@ func _ready() -> void:
 		use_button.visible = false
 	
 	if item.equippable:
-		equipe_button.button_down.connect(_on_equipe_button_down)
+		equip_button.button_down.connect(_on_equip_button_down)
 		item.on_unequip.connect(_on_unequip_item)
 
 		if item.equipped:
-			equipe_button.text = "unequip"
+			equip_button.text = "Unequip"
 		else:
-			equipe_button.text = "equipe"
+			equip_button.text = "Equip"
 	else:
-		equipe_button.visible = false
+		equip_button.visible = false
 	
 	texture_rect.texture = item.texture
 	texture_rect.self_modulate = item.self_modulate
@@ -41,13 +41,13 @@ func _on_use_button_down() -> void:
 	queue_free()
 
 
-func _on_equipe_button_down() -> void:
+func _on_equip_button_down() -> void:
 	if item.equipped:
 		item.unequip()
-		equipe_button.text = "equipe"
+		equip_button.text = "Equip"
 	else:
 		item.equip()
-		equipe_button.text = "unequip"
+		equip_button.text = "Unequip"
 
 
 func _on_drop_button_down() -> void:
@@ -56,4 +56,4 @@ func _on_drop_button_down() -> void:
 
 
 func _on_unequip_item() -> void:
-	equipe_button.text = "equipe"
+	equip_button.text = "Equip"

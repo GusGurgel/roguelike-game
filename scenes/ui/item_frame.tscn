@@ -22,7 +22,7 @@ expand_margin_bottom = 2.0
 atlas = ExtResource("2_2aov2")
 region = Rect2(560, 128, 16, 16)
 
-[node name="ItemFrame" type="HBoxContainer" node_paths=PackedStringArray("name_label", "use_button", "equipe_button", "drop_button", "texture_rect")]
+[node name="ItemFrame" type="HBoxContainer" node_paths=PackedStringArray("name_label", "use_button", "equip_button", "drop_button", "texture_rect")]
 custom_minimum_size = Vector2(0, 30)
 anchors_preset = 10
 anchor_right = 1.0
@@ -31,7 +31,7 @@ grow_horizontal = 2
 script = ExtResource("2_jn6dj")
 name_label = NodePath("NameLabel")
 use_button = NodePath("UseButton")
-equipe_button = NodePath("EquipeButton")
+equip_button = NodePath("EquipButton")
 drop_button = NodePath("DropButton")
 texture_rect = NodePath("MarginContainer/Panel/TextureRect")
 
@@ -73,7 +73,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Use"
 
-[node name="EquipeButton" type="Button" parent="."]
+[node name="EquipButton" type="Button" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Equipe"

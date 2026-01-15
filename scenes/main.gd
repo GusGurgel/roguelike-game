@@ -35,7 +35,7 @@ func load_game_from_dict(dict: Dictionary, _game_ui: GameUI) -> Game:
 
 func _ready() -> void:
 	var json_loader: JSONLoader = JSONLoader.new()
-	json_loader.load_from_path("res://data/zombie_asset_bundle.json")
+	json_loader.load_from_path("res://data/asset_bundle_prompt_2_gpt_120b.json")
 	if not json_loader.has_erros():
 		asset_bundle = AssetBundle.new()
 		asset_bundle.load(json_loader.data)
