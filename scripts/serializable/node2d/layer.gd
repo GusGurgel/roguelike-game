@@ -48,6 +48,9 @@ func can_move_to_position(pos: Vector2i) -> bool:
 func position_has_only_floor(pos: Vector2i) -> bool:
 	var current_tiles: Array[Tile] = get_tiles(pos)
 
+	if len(current_tiles) == 0:
+		return false
+
 	for tile in current_tiles:
 		if tile is Item or tile is Entity:
 			return false
