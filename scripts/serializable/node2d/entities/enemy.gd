@@ -11,7 +11,7 @@ var thread: int = 1:
 
 var weight: int = 1:
 	set(new_weight):
-		thread = clampi(new_weight, 1, 10)
+		weight = clampi(new_weight, 1, 10)
 
 func _init():
 	super._init(true, 0)

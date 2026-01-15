@@ -218,7 +218,7 @@ func get_weight_array_by_level_index(vals: Array, index: float, max_index: float
 
 	return vals_float.map(func(val):
 		var target: float = (min_val + max_val) - val
-		return 11 - round(val + (target - val) * factor)
+		return clamp(11 - round(val + (target - val) * factor), 1, 10)
 	)
 
 
@@ -228,7 +228,7 @@ func generate_layer_list() -> void:
 		layer.dungeon_level = level
 		layer.rooms = layer.tiles.generate_basic_dungeon(
 			Rect2i(0, 0, 50, 50),
-			5,
+			10,
 			10,
 			10,
 			level.wall_tile_preset,
